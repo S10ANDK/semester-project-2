@@ -7,7 +7,9 @@
   "scripts": {
     "build": "sass src/scss:dist/css",
     "watch": "sass --watch src/scss:dist/css & live-server",
-    "format": "prettier -w src/**/*.js"
+    "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -24,7 +26,22 @@
     "bootstrap": "^5.2.0"
   },
   "devDependencies": {
+    "eslint": "^8.28.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
     "prettier": "^2.8.0",
     "sass": "^1.56.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.html": [
+      "prettier --write"
+    ],
+    "*.scss": [
+      "prettier --write"
+    ]
   }
 }

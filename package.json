@@ -1,11 +1,13 @@
 {
   "name": "smester-project-2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "sass src/scss:dist/css",
-    "watch": "sass --watch src/scss:dist/css & live-server"
+    "watch": "sass --watch src/scss:dist/css & live-server",
+    "format": "prettier -w src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "bootstrap": "^5.2.0"
   },
   "devDependencies": {
+    "prettier": "^2.8.0",
     "sass": "^1.56.1"
   }
 }

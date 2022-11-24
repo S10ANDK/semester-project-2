@@ -1,2 +1,95 @@
-@import "_variables.scss";
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import '_variables.scss';
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+body {
+  min-height: 100vh;
+  background-color: $secondary;
+  color: $black;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+  font-family: futura PT Book, sans-serif;
+}
+
+.navbar {
+  background: $primary;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.logo {
+  max-width: 270px;
+  transform: translateY(-3px);
+}
+
+.nav-item a {
+  color: $white;
+}
+
+.nav-link:focus {
+  color: $white;
+}
+
+.nav-item a:hover {
+  color: $gray-300;
+}
+
+.dropdown-menu {
+  background: $primary;
+}
+
+.dropdown-item:hover {
+  background: $primary;
+  color: $gray-300;
+}
+
+.btn-outline-success {
+  color: $white;
+  background: $orange;
+  border-color: $orange;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+  color: $white;
+  border-color: $orange-500;
+  background-color: $orange-500;
+}
+
+.active {
+  font-weight: bolder;
+  color: $white !important;
+}
+
+footer p {
+  color: $white;
+  font-size: 0.9rem;
+}
+
+.top_button {
+  width: 120px;
+  background: $blue;
+}
+
+.top_button:hover {
+  cursor: pointer;
+}
+
+.arrow {
+  width: 20px;
+}
+
+.footer_logo {
+  width: 180px;
+  padding: 40px 0px 100px;
+}

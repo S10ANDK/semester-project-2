@@ -12,21 +12,22 @@
       name="description"
       content="Buy or sell items on Auction Treasury today"
     />
+    <link rel="stylesheet" href="https://use.typekit.net/tbh6oft.css" />
     <link rel="icon" href="/assets/logo_small.png" />
     <link rel="stylesheet" href="dist/css/styles.css" />
     <title>Home</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg bg-light">
+  <body class="d-flex flex-column">
+    <nav class="navbar navbar-expand-lg py-3">
       <div class="container-fluid">
         <a class="navbar-brand" href="/index.html"
           ><img
-            src="assets/logo.png"
-            class="#"
+            src="/assets/logo.png"
+            class="logo"
             alt="Auction Treasury's brand logo"
         /></a>
         <button
-          class="navbar-toggler"
+          class="navbar-toggler bg-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -37,14 +38,14 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <ul class="navbar-nav ms-3 mx-auto mb-lg-0">
+            <li class="nav-item py-2">
+              <a class="nav-link" href="#">Login</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+            <li class="nav-item py-2">
+              <a class="nav-link" href="#">Register</a>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown py-2">
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
@@ -52,26 +53,22 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Name
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Log out</a>
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
           </ul>
-          <form class="d-flex" role="search">
+          <form class="d-flex py-2" role="search">
             <input
               class="form-control me-2"
               type="search"
-              placeholder="Search"
+              placeholder="Search..."
               aria-label="Search"
             />
             <button class="btn btn-outline-success" type="submit">
@@ -81,7 +78,26 @@
         </div>
       </div>
     </nav>
-    <p>hi world</p>
+    <main>
+      <h3>hi world</h3>
+    </main>
+    <footer class="bg-primary mt-auto text-center">
+      <div>
+        <div class="top_button border border-dark rounded-bottom mx-auto pt-2">
+          <img
+            src="/assets/arrow.png"
+            class="arrow"
+            alt="clickable arrow guiding user to top of the page"
+          />
+          <p class="pt-1">Top</p>
+        </div>
+        <img
+          src="/assets/logo.png"
+          class="footer_logo"
+          alt="Auction Treasury's brand logo"
+        />
+      </div>
+    </footer>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

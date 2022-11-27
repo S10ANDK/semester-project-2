@@ -10765,12 +10765,17 @@ body {
   font-family: Verdana, Tahoma, sans-serif;
 }
 
+h1, .h1 {
+  font-size: 2rem;
+}
+
 h2, .h2 {
   font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
 }
 
 h3, .h3 {
-  font-family: futura PT Book, sans-serif;
+  font-family: futura PT, sans-serif;
 }
 
 .navbar {
@@ -10785,7 +10790,7 @@ h3, .h3 {
 }
 
 .logo {
-  max-width: 270px;
+  max-width: 245px;
   transform: translateY(-3px);
 }
 
@@ -10826,6 +10831,89 @@ h3, .h3 {
 .active {
   font-weight: bolder;
   color: #fff !important;
+}
+
+.mw-380 {
+  max-width: 380px;
+}
+
+.mw-450 {
+  max-width: 450px;
+}
+
+.mw-600 {
+  max-width: 600px;
+}
+
+.mw-1200 {
+  max-width: 1200px;
+}
+
+.mw-1400 {
+  max-width: 1400px;
+}
+
+.h-520 {
+  height: 700px;
+}
+
+.item {
+  border-color: #c7c9c9;
+  background-color: #fff;
+}
+
+.item > * {
+  color: #000;
+}
+
+.cardImg {
+  object-fit: cover;
+  height: 250px;
+}
+
+.specificItemHeading {
+  font-size: 2rem;
+}
+
+.createdDate {
+  font-family: futura PT, sans-serif;
+  font-size: 1rem;
+}
+
+.endsAtHeader {
+  align-self: flex-end;
+  margin: 5px 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.endingDate {
+  font-family: futura PT;
+  font-size: 1.2rem;
+}
+
+.itemHeading {
+  align-self: flex-end;
+  font-size: 1.7rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bidsAmount {
+  color: #e87e51;
+  font-family: futura PT;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.viewBtn {
+  height: 50px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.viewBtn p {
+  transform: translateY(4px);
 }
 
 footer p {

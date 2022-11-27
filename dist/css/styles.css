@@ -10794,6 +10794,13 @@ h3, .h3 {
   transform: translateY(-3px);
 }
 
+.plus-icon {
+  width: 22px;
+  height: auto;
+  margin-right: 10px;
+  transform: translateY(-1.9px);
+}
+
 .nav-item a {
   color: #fff;
 }

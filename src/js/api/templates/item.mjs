@@ -14,7 +14,7 @@ export function itemTemplate(itemData) {
     'h-520',
     'mw-380',
     'mx-auto',
-    'my-5',
+    'my-4',
     'border',
     'border-2',
     'rounded-3',
@@ -34,26 +34,26 @@ export function itemTemplate(itemData) {
     const img = document.createElement('img');
     img.src = itemData.media;
     img.alt = `Image from ${itemData.title}`;
-    img.classList.add('w-100', 'text-center', 'cardImg');
+    img.classList.add('text-center', 'cardImg');
     item.append(img);
   }
 
   const itemHeading = document.createElement('h2');
-  itemHeading.classList.add('col', 'd-flex', 'itemHeading');
+  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'mt-4');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   item.appendChild(itemHeading);
 
   if (itemData.description) {
     const bodyContainer = document.createElement('div');
-    bodyContainer.classList.add('overflow-hidden', 'my-3');
+    bodyContainer.classList.add('overflow-hidden', 'my-2', 'descriptionSmall');
     const bodyText = document.createTextNode(itemData.description);
     bodyContainer.appendChild(bodyText);
     item.appendChild(bodyContainer);
   } else {
     const bodyContainer = document.createElement('div');
-    bodyContainer.classList.add('overflow-hidden', 'my-3');
-    const bodyText = document.createTextNode('');
+    bodyContainer.classList.add('overflow-hidden', 'my-2', 'descriptionSmall');
+    const bodyText = document.createTextNode('No description..');
     bodyContainer.appendChild(bodyText);
     item.appendChild(bodyContainer);
   }

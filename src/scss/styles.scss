@@ -9,12 +9,13 @@ body {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.4rem;
+  font-size: 1rem;
+  margin: 0px;
 }
 
 h3 {
@@ -65,26 +66,13 @@ h3 {
   color: $gray-300;
 }
 
-.btn-outline-success {
-  color: $white;
-  background: $orange;
-  border-color: $orange;
-}
-
-.btn-outline-success:hover,
-.btn-outline-success:focus {
-  color: $white;
-  border-color: $orange-500;
-  background-color: $orange-500;
-}
-
 .active {
   font-weight: bolder;
   color: $white !important;
 }
 
 .mw-380 {
-  max-width: 380px;
+  max-width: 280px;
 }
 
 .mw-450 {
@@ -104,12 +92,11 @@ h3 {
 }
 
 .h-520 {
-  height: 700px;
+  // height: 550px;
 }
 
 .item {
   border-color: $secondary;
-  background-color: $white;
 }
 
 .item > * {
@@ -118,16 +105,15 @@ h3 {
 
 .cardImg {
   object-fit: cover;
-  height: 250px;
-}
-
-.specificItemHeading {
-  font-size: 2rem;
+  width: 244px;
+  height: 180px;
+  align-self: flex-start;
 }
 
 .createdDate {
   font-family: futura PT, sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  height: 21.61px;
 }
 
 .endsAtHeader {
@@ -138,32 +124,80 @@ h3 {
 
 .endingDate {
   font-family: futura PT;
-  font-size: 1.2rem;
+  font-style: italic;
+  font-size: 1rem;
 }
 
 .itemHeading {
-  align-self: flex-end;
-  font-size: 1.7rem;
+  align-self: flex-start;
+  font-size: 1.2rem;
+  font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.descriptionSmall {
+  font-size: 0.9rem;
+  height: 90px;
 }
 
 .bidsAmount {
   color: $orange;
   font-family: futura PT;
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.3rem;
+  align-self: flex-end;
+  transform: translateY(-3px);
 }
 
 .viewBtn {
-  height: 50px;
+  height: 40px;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: $white;
   align-self: flex-end;
 }
 
 .viewBtn p {
-  transform: translateY(4px);
+  transform: translateY(0.5px);
+}
+
+.filterButtonsContainer {
+  transform: translateX(-7px);
+}
+
+.btn:focus,
+.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.btn-outline-success {
+  color: $white;
+  background: $orange;
+  border-color: $orange;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:focus {
+  color: $white;
+  border-color: $orange-500;
+  background-color: $orange-500;
+}
+
+.btn-info {
+  background-color: #ffffff;
+  color: $black;
+}
+
+.btn-outline-info {
+  border-color: $black;
+}
+
+.btn-outline-info:hover,
+.btn-outline-info:focus {
+  color: #ffffff;
+  border-color: $orange-500;
+  background-color: $orange-500;
 }
 
 footer p {

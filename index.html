@@ -89,14 +89,14 @@
       </div>
     </nav>
     <main>
-      <div class="row mx-3 bg-white mx-auto mw-1400">
+      <div class="row mx-3 bg-white mx-auto mw-1200">
         <div class="pt-5">
           <h1 class="text-center">Bid on listed items today!</h1>
           <p class="text-center pt-2">
             Use credits to bid on other user's listed items
           </p>
         </div>
-        <div class="filterButtonsContainer text-end mx-auto mw-1200 mt-5">
+        <div class="filterButtonsContainer text-end mx-auto mw-1000 mt-5">
           <button
             type="button"
             id="filterNewestButton"
@@ -112,12 +112,19 @@
             Oldest
           </button>
         </div>
-        <div class="row mx-3 mw-1200 mx-auto" id="listingsContainer"></div>
+        <div class="row mx-3 mw-1000 mx-auto fade-in" id="listingsContainer">
+          <div class="loader-container">
+            <div class="loading-indicator"></div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="bg-primary mt-auto text-center">
       <div>
-        <div class="top_button border border-dark rounded-bottom mx-auto pt-2">
+        <div
+          class="topButton border border-dark rounded-bottom mx-auto pt-2"
+          id="topButton"
+        >
           <img
             src="/assets/arrow.png"
             class="arrow"

@@ -10791,7 +10791,7 @@ h3, .h3 {
 }
 
 .logo {
-  max-width: 245px;
+  max-width: 220px;
   transform: translateY(-3px);
 }
 
@@ -10848,6 +10848,14 @@ h3, .h3 {
   max-width: 1200px;
 }
 
+.h-600 {
+  height: 600px;
+}
+
+.searchField {
+  max-width: 964px;
+}
+
 .item {
   border-color: #c7c9c9;
 }
@@ -10867,18 +10875,21 @@ h3, .h3 {
   font-family: futura PT, sans-serif;
   font-size: 0.9rem;
   height: 21.61px;
+  color: #000;
 }
 
 .endsAtHeader {
   align-self: flex-end;
   margin: 5px 0px;
   font-family: Arial, Helvetica, sans-serif;
+  color: #000;
 }
 
 .endingDate {
   font-family: futura PT;
   font-style: italic;
   font-size: 1rem;
+  color: #000;
 }
 
 .itemHeading {
@@ -10886,17 +10897,21 @@ h3, .h3 {
   font-size: 1.2rem;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  max-height: 50px;
+  overflow: hidden;
 }
 
 .descriptionSmall {
   font-size: 0.9rem;
   height: 90px;
+  color: #000;
 }
 
 .bidsAmount {
-  color: #e87e51;
+  color: #000;
   font-family: futura PT;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.3rem;
   align-self: flex-end;
   transform: translateY(-3px);
@@ -10954,7 +10969,7 @@ h3, .h3 {
 }
 
 .fade-in {
-  animation: blog-fade-effect ease 1.5s forwards;
+  animation: blog-fade-effect ease 1.8s forwards;
 }
 
 .error_message {

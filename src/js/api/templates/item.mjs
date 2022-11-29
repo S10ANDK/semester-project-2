@@ -12,13 +12,13 @@ export function itemTemplate(itemData) {
     'row',
     'w-100',
     'mw-290',
+    'h-600',
     'mx-auto',
     'my-4',
     'border',
     'border-2',
     'rounded-3',
-    'p-3',
-    'd-flex'
+    'p-3'
   );
 
   const createdDateP = document.createElement('p');
@@ -52,7 +52,7 @@ export function itemTemplate(itemData) {
   } else {
     const bodyContainer = document.createElement('div');
     bodyContainer.classList.add('overflow-hidden', 'my-2', 'descriptionSmall');
-    const bodyText = document.createTextNode('No description..');
+    const bodyText = document.createTextNode('');
     bodyContainer.appendChild(bodyText);
     item.appendChild(bodyContainer);
   }

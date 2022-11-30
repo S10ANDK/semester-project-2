@@ -5,7 +5,7 @@
 export function itemTemplate(itemData) {
   const item = document.createElement('a');
   const idItem = itemData.id;
-  item.href = '/html/item-specific/item/?id=' + idItem;
+  item.href = '/html/item-specific/?id=' + idItem;
   item.classList.add(
     'item',
     'text-decoration-none',
@@ -96,7 +96,7 @@ export function itemTemplate(itemData) {
     'viewBtn'
   );
   const id = itemData.id;
-  viewPostButton.href = '/html/item-specific/item/?id=' + id;
+  viewPostButton.href = '/html/item-specific/?id=' + id;
   const buttonText = document.createElement('p');
   buttonText.innerText = 'View Item';
   viewPostButton.appendChild(buttonText);

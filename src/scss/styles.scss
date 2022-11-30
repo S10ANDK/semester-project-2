@@ -24,6 +24,7 @@ h3 {
 
 .navbar {
   background: $primary;
+  min-height: 80px;
 }
 
 .navbar-toggler:focus,
@@ -155,7 +156,7 @@ h3 {
   color: $black;
   font-family: futura PT;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.2nrem;
   align-self: flex-end;
   transform: translateY(-4px);
 }

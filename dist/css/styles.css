@@ -10781,6 +10781,7 @@ h3, .h3 {
 
 .navbar {
   background: #4c5970;
+  min-height: 80px;
 }
 
 .navbar-toggler:focus,
@@ -10912,7 +10913,7 @@ h3, .h3 {
   color: #000;
   font-family: futura PT;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.2nrem;
   align-self: flex-end;
   transform: translateY(-4px);
 }

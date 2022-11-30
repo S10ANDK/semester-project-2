@@ -6,8 +6,10 @@ import * as templates from '../api/templates/item.mjs';
 /**
  * Filters posts by created date, descending.
  */
+const filterNewestButton = document.querySelector('#filterNewestButton');
+const filterOldestButton = document.querySelector('#filterOldestButton');
 
-export async function filterDescending() {
+async function filterDescending() {
   const filterNewestButton = document.querySelector('#filterNewestButton');
   const filterOldestButton = document.querySelector('#filterOldestButton');
   const getItemsURL = auctionURLDesc;
@@ -21,17 +23,20 @@ export async function filterDescending() {
     filterNewestButton.classList.remove('btn-info', 'btn-outline-info');
     filterOldestButton.classList.add('btn-info', 'btn-outline-info');
     filterOldestButton.classList.remove('btn-success', 'btn-outline-success');
-    filterNewestButton.addEventListener('click', filterDescending);
   } catch {
     console.log('An error has occured');
   }
+}
+
+export async function activateFilterDesc() {
+  filterNewestButton.addEventListener('click', filterDescending);
 }
 
 /**
  * Filters posts by created date, ascending.
  */
 
-export async function filterAscending() {
+async function filterAscending() {
   const filterOldestButton = document.querySelector('#filterOldestButton');
   const filterNewestButton = document.querySelector('#filterNewestButton');
   const getItemsURL = auctionURLAsc;
@@ -45,8 +50,12 @@ export async function filterAscending() {
     filterOldestButton.classList.remove('btn-info', 'btn-outline-info');
     filterNewestButton.classList.add('btn-info', 'btn-outline-info');
     filterNewestButton.classList.remove('btn-success', 'btn-outline-success');
-    filterOldestButton.addEventListener('click', filterAscending);
+    // filterOldestButton.addEventListener('click', filterAscending);
   } catch {
     console.log('An error has occured');
   }
+}
+
+export async function activateFilterAsc() {
+  filterOldestButton.addEventListener('click', filterAscending);
 }

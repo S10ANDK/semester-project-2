@@ -3,5 +3,5 @@ import {} from './components/index.mjs';
 
 listeners.getItemsList();
 
-listeners.filterAscending();
-listeners.filterDescending();
+listeners.activateFilterDesc();
+listeners.activateFilterAsc();

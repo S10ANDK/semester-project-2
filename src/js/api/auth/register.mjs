@@ -31,7 +31,13 @@ export async function registerProfile(profile) {
 
     registerSuccess.appendChild(registerSuccessText);
     formContainer.appendChild(registerSuccess);
-    formContainer.classList.add('text-center', 'mw-600', 'mx-auto', 'pt-3');
+    formContainer.classList.add(
+      'text-center',
+      'mw-600',
+      'mx-auto',
+      'pt-3',
+      'fade-in'
+    );
     const icon = document.createElement('img');
     icon.setAttribute('src', '/assets/success_icon.png');
     icon.classList.add('success_icon', 'text-center', 'mx-auto', 'pt-3');
@@ -44,6 +50,7 @@ export async function registerProfile(profile) {
     console.log('An error has occured');
     form.style.display = 'none';
     form.classList.remove('d-flex');
+    formContainer.classList.add('fade-in');
     formContainer.innerHTML = errorMessage(
       'A user with the same email address and/or username is already registered. Please try again with different credentials. Refresh the page to start over.'
     );
@@ -52,6 +59,7 @@ export async function registerProfile(profile) {
     console.log(response.status);
     form.style.display = 'none';
     form.classList.remove('d-flex');
+    formContainer.classList.add('fade-in');
     formContainer.innerHTML = errorMessage(
       'An error has occured. Please try again after a few minutes by refreshing the page.'
     );

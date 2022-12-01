@@ -23,10 +23,10 @@ export function setFormRegisterListener() {
       };
 
       registerProfile(profile);
-      setTimeout(function timer() {
-        window.location.href = '/html/login';
-      }, 1000);
-      alert('You have been registered');
+      // setTimeout(function timer() {
+      //   window.location.href = '/html/login';
+      // }, 5000);
+      // alert('You have been registered');
     });
   }
 }

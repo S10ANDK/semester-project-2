@@ -76,6 +76,11 @@ a {
   color: $white !important;
 }
 
+.dropdown-menu .show {
+  width: 20px !important;
+  overflow: hidden;
+}
+
 .mw-290 {
   max-width: 290px;
 }
@@ -221,12 +226,17 @@ a {
   object-fit: cover;
 }
 
+.success_icon {
+  width: 150px;
+  height: auto;
+}
+
 .fade-in {
   animation: blog-fade-effect ease 1.8s forwards;
 }
 
 .error_message {
-  max-width: 300px;
+  max-width: 600px;
   background-color: #ffffff;
   color: red;
   padding: 50px;

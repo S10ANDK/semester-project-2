@@ -80,7 +80,69 @@
         </div>
       </div>
     </nav>
-    <main></main>
+    <main>
+      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="mx-auto mw-1000" id="registerContainer">
+          <div class="mx-auto text-center pb-5 pt-md-5">
+            <img
+              src="/assets/login-image.jpg"
+              class="mw-600 w-100 banner_image border rounded-1"
+              alt="Diversity of people"
+            />
+          </div>
+          <div id="formContainer">
+            <form
+              method="POST"
+              class="form d-flex flex-column mw-600 mx-sm-auto mx-2"
+              id="formRegister"
+            >
+              <p class="mb-5">
+                Log in with your noroff account, and start bidding on items
+                today!
+              </p>
+              <label for="email">E-mail:</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="mt-1 mb-3 form-control"
+                required
+                pattern="^[\w\-.]+@?stud.noroff.no$"
+                title="E-mail address needs to contain @stud.noroff.no"
+              />
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control mt-1 mb-3"
+                required
+                minlength="8"
+              />
+              <div class="login-links row">
+                <div class="col">
+                  <a
+                    href="/html/register/"
+                    class="my-4 register-link"
+                    type="submit"
+                    >Not yet got an account?
+                    <span class="d-block">Register here..</span></a
+                  >
+                </div>
+                <div class="col text-end">
+                  <button
+                    class="btn btn-primary my-4 px-4 letter-spacing"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer class="bg-primary mt-auto text-center">
       <div>
         <div

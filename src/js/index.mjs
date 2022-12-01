@@ -9,4 +9,6 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.activateFilterAsc();
 } else if (urlPath === '/html/register/') {
   listeners.setFormRegisterListener();
+} else if (urlPath === '/html/login/') {
+  listeners.setFormLoginListener();
 }

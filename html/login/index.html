@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <meta
       name="description"
@@ -82,7 +82,7 @@
     </nav>
     <main>
       <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
-        <div class="mx-auto mw-1000" id="registerContainer">
+        <div class="mx-auto mw-1000" id="loginContainer">
           <div class="mx-auto text-center pb-5 pt-md-5">
             <img
               src="/assets/login-image.jpg"
@@ -94,7 +94,7 @@
             <form
               method="POST"
               class="form d-flex flex-column mw-600 mx-sm-auto mx-2"
-              id="formRegister"
+              id="formLogin"
             >
               <p class="mb-5">
                 Log in with your noroff account, and start bidding on items
@@ -119,21 +119,15 @@
                 required
                 minlength="8"
               />
-              <div class="login-links row">
+              <div class="row">
                 <div class="col">
-                  <a
-                    href="/html/register/"
-                    class="my-4 register-link"
-                    type="submit"
+                  <a href="/html/register/" class="my-4" type="submit"
                     >Not yet got an account?
                     <span class="d-block">Register here..</span></a
                   >
                 </div>
                 <div class="col text-end">
-                  <button
-                    class="btn btn-primary my-4 px-4 letter-spacing"
-                    type="submit"
-                  >
+                  <button class="btn btn-primary my-4 px-4" type="submit">
                     Login
                   </button>
                 </div>

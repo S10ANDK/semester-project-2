@@ -10779,6 +10779,10 @@ h3, .h3 {
   font-family: futura PT, sans-serif;
 }
 
+a {
+  color: #000;
+}
+
 .navbar {
   background: #4c5970;
   min-height: 80px;
@@ -10967,6 +10971,11 @@ h3, .h3 {
   color: #ffffff;
   border-color: #d07853;
   background-color: #d07853;
+}
+
+.register_image {
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .fade-in {

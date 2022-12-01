@@ -22,6 +22,10 @@ h3 {
   font-family: futura PT, sans-serif;
 }
 
+a {
+  color: $black;
+}
+
 .navbar {
   background: $primary;
   min-height: 80px;
@@ -210,6 +214,11 @@ h3 {
   color: #ffffff;
   border-color: $orange-500;
   background-color: $orange-500;
+}
+
+.register_image {
+  max-height: 250px;
+  object-fit: cover;
 }
 
 .fade-in {

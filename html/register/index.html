@@ -80,7 +80,81 @@
         </div>
       </div>
     </nav>
-    <main></main>
+    <main>
+      <div class="pageContainer row mx-3 bg-white mx-auto mw-1200 min-vh-100">
+        <div class="mx-auto py-5 mw-1000">
+          <div class="mx-auto text-center py-4">
+            <img
+              src="/assets/register-image.jpg"
+              class="mw-600 w-100 register_image"
+              alt="Diversity of people"
+            />
+          </div>
+          <form
+            method="POST"
+            class="form d-flex flex-column mw-600 mx-auto"
+            id="formRegister"
+          >
+            <p class="mb-5">
+              Create an Auction Treasury account with your Noroff e-mail address
+              (ending with @stud.noroff.no)
+            </p>
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="mt-1 mb-3 form-control"
+              required
+              pattern="^[\w]+$"
+              title="Username can only contain upper case and lower case letters, numbers and underscore"
+            />
+            <label for="email">E-mail:</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="mt-1 mb-3 form-control"
+              required
+              pattern="^[\w\-.]+@?stud.noroff.no$"
+              title="E-mail address needs to contain @stud.noroff.no"
+            />
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="form-control mt-1 mb-3"
+              required
+              minlength="8"
+            />
+            <label for="avatar">Avatar:</label>
+            <input
+              type="media"
+              name="avatar"
+              id="avatar"
+              class="form-control mt-1 mb-3"
+            />
+            <div class="login-links row">
+              <div class="col">
+                <a href="/html/login/" class="my-4 register-link" type="submit"
+                  >Already have an account?
+                  <span class="d-block">Login here..</span></a
+                >
+              </div>
+              <div class="col text-end">
+                <button
+                  class="btn btn-primary my-4 letter-spacing"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
     <footer class="bg-primary mt-auto text-center">
       <div>
         <div

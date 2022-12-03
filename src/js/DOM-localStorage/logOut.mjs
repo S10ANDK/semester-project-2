@@ -10,9 +10,10 @@ export function logOut() {
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.removeItem('avatar');
+    localStorage.removeItem('credits');
 
     alert('You have been logged out');
 
-    window.location.href = '/index.html';
+    window.location.href = '/';
   });
 }

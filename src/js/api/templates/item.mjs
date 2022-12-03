@@ -38,7 +38,7 @@ export function itemTemplate(itemData) {
   } else {
     const img = document.createElement('img');
     img.src = itemData.media;
-    img.alt = `Image from ${itemData.title}`;
+    img.alt = 'Placeholder image';
     img.classList.add('text-center', 'cardImg');
     item.append(img);
   }

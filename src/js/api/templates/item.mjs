@@ -56,8 +56,13 @@ export function itemTemplate(itemData) {
     item.appendChild(bodyContainer);
   } else {
     const bodyContainer = document.createElement('div');
-    bodyContainer.classList.add('overflow-hidden', 'my-2', 'descriptionSmall');
-    const bodyText = document.createTextNode('');
+    bodyContainer.classList.add(
+      'overflow-hidden',
+      'my-2',
+      'descriptionSmall',
+      'fst-italic'
+    );
+    const bodyText = document.createTextNode('No description provided..');
     bodyContainer.appendChild(bodyText);
     item.appendChild(bodyContainer);
   }

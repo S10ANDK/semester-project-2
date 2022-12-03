@@ -1,5 +1,5 @@
 /**
- * Changes the navigation to only display relevant links
+ * Changes the navigation to only display relevant links and information
  */
 
 export function updateNavLinks() {

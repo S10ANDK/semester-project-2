@@ -29,17 +29,16 @@ export function itemTemplate(itemData) {
   createdDateP.appendChild(createdDate);
   item.appendChild(createdDateP);
 
+  const img = document.createElement('img');
+  img.classList.add('text-center', 'cardImg');
+
   if (itemData.media[0] === undefined) {
-    const img = document.createElement('img');
     img.src = '/assets/image_placeholder.png';
     img.alt = 'image placeholder';
-    img.classList.add('text-center', 'cardImg');
     item.append(img);
   } else {
-    const img = document.createElement('img');
     img.src = itemData.media;
     img.alt = `Image from ${itemData.title}`;
-    img.classList.add('text-center', 'cardImg');
     item.append(img);
   }
 

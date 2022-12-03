@@ -32,13 +32,13 @@ export function itemTemplate(itemData) {
   if (itemData.media[0] === undefined) {
     const img = document.createElement('img');
     img.src = '/assets/image_placeholder.png';
-    img.alt = `Image from ${itemData.title}`;
+    img.alt = 'image placeholder';
     img.classList.add('text-center', 'cardImg');
     item.append(img);
   } else {
     const img = document.createElement('img');
     img.src = itemData.media;
-    img.alt = 'Placeholder image';
+    img.alt = `Image from ${itemData.title}`;
     img.classList.add('text-center', 'cardImg');
     item.append(img);
   }

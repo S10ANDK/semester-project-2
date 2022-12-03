@@ -20,8 +20,8 @@
   </head>
   <body class="d-flex flex-column">
     <nav class="navbar navbar-expand-lg py-2">
-      <div class="container-fluid py-3">
-        <a class="navbar-brand" href="/index.html"
+      <div class="container-fluid p-3">
+        <a class="navbar-brand" href="/" id="logoLink"
           ><img
             src="/assets/logo.png"
             class="logo ms-3"
@@ -39,9 +39,12 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-3 mx-auto mb-lg-0">
-            <li class="nav-item p-2">
-              <a class="nav-link pt-4 pt-lg-2" href="/html/list-item/create/"
+          <ul class="navbar-nav me-3 mx-auto mb-lg-0 mt-4 mt-lg-0">
+            <li
+              class="nav-item mt-0 mt-lg-0 p-2 py-lg-2"
+              id="listItemLinkContainer"
+            >
+              <a class="nav-link" href="/html/list-item/create/"
                 ><img
                   src="/assets/plus.png"
                   class="plus-icon"
@@ -49,32 +52,28 @@
                 />List an item</a
               >
             </li>
-            <li class="nav-item p-2">
+            <li class="nav-item p-2" id="loginLinkContainer">
               <a class="nav-link" href="/html/login/">Login</a>
             </li>
-            <li class="nav-item p-2">
+            <li class="nav-item p-2" id="registerLinkContainer">
               <a class="nav-link" href="/html/register/">Register</a>
             </li>
-            <li class="nav-item dropdown p-2 pe-5">
+            <li class="nav-item p-2 d-lg-none" id="viewProfileLinkContainer">
+              <a class="nav-link" href="/html/profile/details/">View profile</a>
+            </li>
+            <div
+              class="px-lg-4 mt-3 mb-0 my-lg-0 text-end d-lg-none"
+              id="signedInAsContainer"
+            ></div>
+            <li
+              class="px-lg-4 mt-3 mb-0 my-lg-0 text-end d-none"
+              id="avatarContainer"
+            >
               <a
-                class="nav-link dropdown-toggle"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Name
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item" href="/html/profile/details/"
-                    >Profile</a
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="/">Log out</a>
-                </li>
-              </ul>
+                class="nav-link"
+                id="avatarLink"
+                href="/html/profile/details/"
+              ></a>
             </li>
           </ul>
         </div>

@@ -76,10 +76,39 @@ a {
   color: $white !important;
 }
 
-.dropdown-menu .show {
-  width: 20px !important;
-  overflow: hidden;
+// #userNameLink {
+//   padding-right: 65px;
+// }
+
+.profile_image-small {
+  display: block;
+  width: 43px;
+  height: 43px;
 }
+
+.dropdown-menu.show {
+  transform: translateY(21px);
+  border: none;
+  border-radius: 0;
+}
+
+.dropdown-menu li {
+  max-width: 20px;
+}
+
+.dropdown-toggle {
+  visibility: none;
+}
+
+.signedInAsText {
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+// .italic {
+//   font-style: italic;
+// }
 
 .mw-290 {
   max-width: 290px;

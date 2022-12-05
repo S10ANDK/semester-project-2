@@ -37,8 +37,22 @@ export function updateNavLinks() {
     const avatar = document.createElement('img');
     avatarContainer.classList.add('d-lg-inline');
     avatar.classList.add('profile_image-small', 'rounded-2');
-    if (typeof storedAvatar[0] === 'string') {
+    if (
+      typeof storedAvatar[0] === 'string' &&
+      !storedAvatar[0].includes(
+        '.jpg',
+        '.jpeg',
+        '.png',
+        '.webP',
+        '.SVG',
+        '.GIF'
+      )
+    ) {
       const avatarUrl = `${storedAvatar}${jpg}`;
+      avatar.src = avatarUrl;
+      avatarLink.append(avatar);
+    } else if (typeof storedAvatar[0] === 'string') {
+      const avatarUrl = storedAvatar;
       avatar.src = avatarUrl;
       avatarLink.append(avatar);
     } else {

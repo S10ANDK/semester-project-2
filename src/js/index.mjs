@@ -12,6 +12,9 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.setFormRegisterListener();
 } else if (urlPath === '/html/login/') {
   listeners.setFormLoginListener();
+} else if (urlPath === '/html/profile/details/') {
+  listeners.getProfile();
+  actions.logOut();
 }
 
 actions.updateNavLinks();

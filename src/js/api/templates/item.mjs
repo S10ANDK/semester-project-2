@@ -39,6 +39,9 @@ export function itemTemplate(itemData) {
   } else {
     img.src = itemData.media;
     img.alt = `Image from ${itemData.title}`;
+    img.onerror = function imageError() {
+      img.src = '/assets/image_placeholder.png';
+    };
     item.append(img);
   }
 

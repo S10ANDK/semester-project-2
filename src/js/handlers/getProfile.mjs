@@ -10,10 +10,7 @@ const profileContainer = document.querySelector('#profileContainer');
 
 export async function getProfile() {
   const name = localStorage.getItem('name');
-  //   const testUrl = `${urls.API_AUCTION_URL}${action}`
-  const getProfileURL = `${urls.API_AUCTION_URL}${action}${name}`;
-  //   console.log(testUrl);
-  console.log(getProfileURL);
+  const getProfileURL = `${urls.API_AUCTION_URL}${action}${name}?_listings=true`;
   try {
     const profile = await profileMethods.getProfile(getProfileURL);
     profileContainer.innerHTML = '';

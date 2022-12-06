@@ -82,13 +82,17 @@
       </div>
     </nav>
     <main>
-      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
-        <div class="text-end">
-          <a class="btn btn-secondary rounded-1 m-3 me-1" id="logOutButton">
+      <div class="mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="text-end" id="logOutContainer">
+          <a class="btn btn-secondary rounded-1 m-3" id="logOutButton">
             Log out
           </a>
         </div>
-        <div id="profileContainer"></div>
+        <div class="text-center" id="profileContainer">
+          <div class="loader-container">
+            <div class="loading-indicator"></div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="bg-primary mt-auto text-center">

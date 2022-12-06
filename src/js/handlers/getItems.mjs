@@ -19,5 +19,6 @@ export async function getItemsList() {
   } catch {
     console.log('An error has occured');
     listingsContainer.innerHTML = errorMessage('An error has occured');
+    listingsContainer.classList.add('text-center');
   }
 }

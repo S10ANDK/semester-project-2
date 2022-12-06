@@ -106,10 +106,6 @@ a {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-// .italic {
-//   font-style: italic;
-// }
-
 .mw-290 {
   max-width: 290px;
 }
@@ -199,12 +195,6 @@ a {
   transform: translateY(-4px);
 }
 
-#logOutButton {
-  width: 90px;
-  height: 35px;
-  font-size: 0.9rem;
-}
-
 .viewBtn {
   height: 40px;
   font-weight: bold;
@@ -254,6 +244,29 @@ a {
   color: #ffffff;
   border-color: $orange-500;
   background-color: $orange-500;
+}
+
+#logOutButton {
+  width: 90px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+
+.avatar {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.editAvatarLink {
+  transform: translateX(-75px);
+  max-width: 110px;
+}
+
+.creditsDisplayed {
+  font-style: Futura PT;
+  font-size: 2rem;
+  color: $orange;
 }
 
 .banner_image {

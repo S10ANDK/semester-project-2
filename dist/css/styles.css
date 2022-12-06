@@ -10948,12 +10948,6 @@ a {
   transform: translateY(-4px);
 }
 
-#logOutButton {
-  width: 90px;
-  height: 35px;
-  font-size: 0.9rem;
-}
-
 .viewBtn {
   height: 40px;
   font-weight: bold;
@@ -11003,6 +10997,29 @@ a {
   color: #ffffff;
   border-color: #d07853;
   background-color: #d07853;
+}
+
+#logOutButton {
+  width: 90px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+
+.avatar {
+  height: 300px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.editAvatarLink {
+  transform: translateX(-75px);
+  max-width: 110px;
+}
+
+.creditsDisplayed {
+  font-style: Futura PT;
+  font-size: 2rem;
+  color: #e87e51;
 }
 
 .banner_image {

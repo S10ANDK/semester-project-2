@@ -119,6 +119,7 @@
                 required
                 pattern="^[\w\-.]+@?stud.noroff.no$"
                 title="E-mail address needs to contain @stud.noroff.no"
+                placeholder="*@stud.noroff.no"
               />
               <label for="password">Password:</label>
               <input
@@ -128,6 +129,7 @@
                 class="form-control mt-1 mb-3"
                 required
                 minlength="8"
+                title="Password must contain at least 8 characters"
               />
               <label for="avatar">Avatar:</label>
               <input
@@ -135,6 +137,9 @@
                 name="avatar"
                 id="avatar"
                 class="form-control mt-1 mb-3"
+                pattern="^[\w]+$"
+                title="Avatar must be a URL"
+                placeholder="https://image.com/example"
               />
               <div class="row">
                 <div class="col">

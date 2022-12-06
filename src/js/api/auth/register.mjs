@@ -45,7 +45,7 @@ export async function registerProfile(profile) {
 
     setTimeout(function timer() {
       window.location.href = '/html/login';
-    }, 8000);
+    }, 5000);
   } else if (statusCodeResponse === 400) {
     console.log('An error has occured');
     form.style.display = 'none';

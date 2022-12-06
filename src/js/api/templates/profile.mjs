@@ -15,6 +15,19 @@ export function profileTemplate(profileData) {
 
   if (
     typeof avatarUrl.nodeValue === 'string' &&
+    avatarUrl.nodeValue.includes(
+      '.jpg',
+      '.jpeg',
+      '.png',
+      '.webP',
+      '.SVG',
+      '.GIF'
+    )
+  ) {
+    avatar.src = avatarUrl.nodeValue;
+    profileContentContainer.appendChild(avatar);
+  } else if (
+    'string' &&
     !avatarUrl.nodeValue.includes(
       '.jpg',
       '.jpeg',
@@ -27,9 +40,6 @@ export function profileTemplate(profileData) {
     const jpg = '.jpg';
     const newAvatarUrl = `${avatarUrl.nodeValue}${jpg}`;
     avatar.src = newAvatarUrl;
-    profileContentContainer.appendChild(avatar);
-  } else if (typeof avatarUrl === 'string') {
-    avatar.src = avatarUrl.nodeValue;
     profileContentContainer.appendChild(avatar);
   } else {
     avatar.src = '/assets/avatar-stock.png';

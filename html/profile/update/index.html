@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <meta
       name="description"
@@ -79,7 +79,40 @@
         </div>
       </div>
     </nav>
-    <main></main>
+    <main>
+      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="mx-auto mw-1000" id="updateAvatarContainer">
+          <h1 class="text-center my-5">Update avatar</h1>
+          <div id="avatarFormContainer">
+            <form
+              method="PUT"
+              class="form d-flex flex-column mw-600 mx-sm-auto mx-2"
+              id="formUpdateAvatar"
+            >
+              <p class="mb-5">
+                Update the avatar for your Auction Treasury profile. We will
+                only accept a URL (a link to an image from the internet).
+              </p>
+              <label for="avatar">Avatar:</label>
+              <input
+                type="media"
+                name="avatar"
+                id="avatar"
+                class="form-control mt-1 mb-3"
+                placeholder="https://image.com/example"
+                required
+                title="Avatar must be a URL"
+              />
+              <div class="col text-end">
+                <button class="btn btn-primary my-4" type="submit">
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer class="bg-primary mt-auto text-center">
       <div>
         <div

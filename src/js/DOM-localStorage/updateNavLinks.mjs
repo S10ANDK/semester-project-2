@@ -17,7 +17,7 @@ export function updateNavLinks() {
     '#registerLinkContainer'
   );
 
-  const storedAvatar = localStorage.getItem('avatar');
+  // const storedAvatar = localStorage.getItem('avatar');
   const storedName = localStorage.getItem('name');
 
   if (localStorage.getItem('name') === null) {
@@ -33,31 +33,33 @@ export function updateNavLinks() {
     loginLinkContainer.style.display = 'none';
     registerLinkContainer.style.display = 'none';
 
-    const jpg = '.jpg';
+    // const jpg = '.jpg';
     const avatar = document.createElement('img');
     avatarContainer.classList.add('d-lg-inline');
     avatar.classList.add('profile_image-small', 'rounded-2');
-    if (
-      typeof storedAvatar[0] === 'string' &&
-      !storedAvatar[0].includes(
-        '.jpg',
-        '.jpeg',
-        '.png',
-        '.webP',
-        '.SVG',
-        '.GIF'
-      )
-    ) {
-      const avatarUrl = `${storedAvatar}${jpg}`;
-      avatar.src = avatarUrl;
-      avatarLink.append(avatar);
-    } else if (typeof storedAvatar[0] === 'string') {
-      const avatarUrl = storedAvatar;
-      avatar.src = avatarUrl;
-      avatarLink.append(avatar);
-    } else {
-      avatar.src = '/assets/avatar-stock.png';
-      avatarLink.append(avatar);
-    }
+    avatar.src = '/assets/avatar-stock.png';
+    avatarLink.append(avatar);
+    // if (
+    //   typeof storedAvatar[0] === 'string' &&
+    //   !storedAvatar[0].includes(
+    //     '.jpg',
+    //     '.jpeg',
+    //     '.png',
+    //     '.webP',
+    //     '.SVG',
+    //     '.GIF'
+    //   )
+    // ) {
+    //   const avatarUrl = `${storedAvatar}${jpg}`;
+    //   avatar.src = avatarUrl;
+    //   avatarLink.append(avatar);
+    // } else if (typeof storedAvatar[0] === 'string') {
+    //   const avatarUrl = storedAvatar;
+    //   avatar.src = avatarUrl;
+    //   avatarLink.append(avatar);
+    // } else {
+    //   avatar.src = '/assets/avatar-stock.png';
+    //   avatarLink.append(avatar);
+    // }
   }
 }

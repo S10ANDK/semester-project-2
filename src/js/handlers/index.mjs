@@ -7,3 +7,4 @@ export * from './getItems.mjs';
 export * from './filterItems.mjs';
 export * from './searchItems.mjs';
 export * from './getProfile.mjs';
+export * from './updateAvatar.mjs';

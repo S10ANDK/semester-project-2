@@ -15,6 +15,8 @@ if (urlPath === '/index.html' || urlPath === '/') {
 } else if (urlPath === '/html/profile/details/') {
   listeners.getProfile();
   actions.logOut();
+} else if (urlPath === '/html/profile/update/') {
+  listeners.setFormUpdateAvatarListener();
 }
 
 actions.updateNavLinks();

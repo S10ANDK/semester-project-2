@@ -246,6 +246,11 @@ a {
   background-color: $orange-500;
 }
 
+#profileInfoContainer {
+  background-color: $primary;
+  color: #ffffff;
+}
+
 #logOutButton {
   width: 90px;
   height: 35px;
@@ -261,6 +266,11 @@ a {
 .editAvatarLink {
   transform: translateX(-75px);
   max-width: 110px;
+  color: #ffffff;
+}
+
+.editAvatarLink:hover {
+  color: #ebebeb;
 }
 
 .creditsDisplayed {

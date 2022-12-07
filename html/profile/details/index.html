@@ -82,16 +82,24 @@
       </div>
     </nav>
     <main>
-      <div class="mx-lg-auto bg-white mw-1200 min-vh-100">
-        <div class="text-end" id="logOutContainer">
-          <a class="btn btn-secondary rounded-1 m-3" id="logOutButton">
-            Log out
-          </a>
-        </div>
-        <div class="text-center" id="profileContainer">
-          <div class="loader-container">
-            <div class="loading-indicator"></div>
+      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="mw-1000 mx-auto border col my-5">
+          <div
+            class="row d-flex flex-row-reverse justify-content-between"
+            id="upperDiv"
+          >
+            <div class="text-end col" id="logOutContainer">
+              <a class="btn btn-secondary rounded-1 mt-3 me-1" id="logOutButton"
+                >Log Out</a
+              >
+            </div>
           </div>
+          <div class="text-center row col" id="profileContainer">
+            <div class="loader-container">
+              <div class="loading-indicator"></div>
+            </div>
+          </div>
+          <div class="d-none" id="avatarModal">test</div>
         </div>
       </div>
     </main>

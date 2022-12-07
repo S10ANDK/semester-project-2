@@ -1,10 +1,9 @@
-const logOutButton = document.querySelector('#logOutButton');
-
 /**
  * Logs out user by removing objects from localStorage, and redirecting the user to home page.
  */
 
-export function logOut() {
+export async function logOut() {
+  const logOutButton = document.querySelector('#logOutButton');
   logOutButton.addEventListener('click', () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('name');

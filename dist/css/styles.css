@@ -10999,6 +10999,11 @@ a {
   background-color: #d07853;
 }
 
+#profileInfoContainer {
+  background-color: #4c5970;
+  color: #ffffff;
+}
+
 #logOutButton {
   width: 90px;
   height: 35px;
@@ -11014,6 +11019,11 @@ a {
 .editAvatarLink {
   transform: translateX(-75px);
   max-width: 110px;
+  color: #ffffff;
+}
+
+.editAvatarLink:hover {
+  color: #ebebeb;
 }
 
 .creditsDisplayed {

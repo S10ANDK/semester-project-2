@@ -1,13 +1,22 @@
 export function profileTemplate(profileData) {
   const profileContentContainer = document.createElement('div');
-  profileContentContainer.classList.add('mw-600', 'mx-auto');
+  profileContentContainer.classList.add('mw-1000', 'mx-auto');
 
+  const greetingContainer = document.querySelector('#upperDiv');
+  greetingContainer.classList.add('d-flex', 'justify-content-between');
   const name = document.createElement('h1');
-  name.classList.add('py-4', 'mb-5', 'text-start');
+  name.setAttribute('id', 'profileHeader');
+  name.classList.add('py-4', 'mb-5', 'ms-4', 'text-start', 'col');
   const nameText = document.createTextNode(profileData.name);
-  const greetingText = `Hi there, ${nameText.nodeValue}!`;
+  const greetingText = `Welcome, ${nameText.nodeValue}!`;
   name.append(greetingText);
-  profileContentContainer.appendChild(name);
+  greetingContainer.appendChild(name);
+
+  profileContentContainer.appendChild(greetingContainer);
+
+  const profileInfoContainer = document.createElement('div');
+  profileInfoContainer.classList.add('py-5', 'mw-600', 'mx-auto', 'rounded-3');
+  profileInfoContainer.setAttribute('id', 'profileInfoContainer');
 
   const avatar = document.createElement('img');
   avatar.classList.add('rounded-3', 'avatar');
@@ -20,30 +29,34 @@ export function profileTemplate(profileData) {
       '.jpeg',
       '.png',
       '.webP',
-      '.SVG',
-      '.GIF'
+      '.svg',
+      '.gif'
     )
   ) {
     avatar.src = avatarUrl.nodeValue;
-    profileContentContainer.appendChild(avatar);
+
+    profileInfoContainer.appendChild(avatar);
+    profileContentContainer.appendChild(profileInfoContainer);
   } else if (
-    'string' &&
+    typeof avatarUrl.nodeValue === 'string' &&
     !avatarUrl.nodeValue.includes(
       '.jpg',
       '.jpeg',
       '.png',
       '.webP',
-      '.SVG',
-      '.GIF'
+      '.svg',
+      '.gif'
     )
   ) {
     const jpg = '.jpg';
     const newAvatarUrl = `${avatarUrl.nodeValue}${jpg}`;
     avatar.src = newAvatarUrl;
-    profileContentContainer.appendChild(avatar);
+    profileInfoContainer.appendChild(avatar);
+    profileContentContainer.appendChild(profileInfoContainer);
   } else {
     avatar.src = '/assets/avatar-stock.png';
-    profileContentContainer.appendChild(avatar);
+    profileInfoContainer.appendChild(avatar);
+    profileContentContainer.appendChild(profileInfoContainer);
   }
 
   const editAvatarLink = document.createElement('a');
@@ -51,24 +64,28 @@ export function profileTemplate(profileData) {
   editAvatarLink.href = '/html/profile/update/';
   const editAvatarLinkText = document.createTextNode('Edit avatar');
   editAvatarLink.append(editAvatarLinkText);
-  profileContentContainer.appendChild(editAvatarLink);
+  profileInfoContainer.appendChild(editAvatarLink);
+  profileContentContainer.appendChild(profileInfoContainer);
 
   const email = document.createElement('p');
   email.classList.add('my-4');
   const emailText = document.createTextNode(profileData.email);
   email.append(emailText);
-  profileContentContainer.appendChild(email);
+  profileInfoContainer.appendChild(email);
+  profileContentContainer.appendChild(profileInfoContainer);
 
   const creditsTitle = document.createElement('p');
   const creditsTitleText = document.createTextNode('Credits:');
   creditsTitle.append(creditsTitleText);
-  profileContentContainer.appendChild(creditsTitle);
+  profileInfoContainer.appendChild(creditsTitle);
+  profileContentContainer.appendChild(profileInfoContainer);
 
   const credits = document.createElement('p');
   credits.classList.add('creditsDisplayed');
   const creditsNumber = document.createTextNode(profileData.credits);
   credits.append(creditsNumber);
-  profileContentContainer.appendChild(credits);
+  profileInfoContainer.appendChild(credits);
+  profileContentContainer.appendChild(profileInfoContainer);
 
   // const wins = document.createElement('p');
   // const winsNumber = document.createTextNode(profileData.wins.length);

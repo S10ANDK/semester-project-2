@@ -17,6 +17,8 @@ if (urlPath === '/index.html' || urlPath === '/') {
   actions.logOut();
 } else if (urlPath === '/html/profile/update/') {
   listeners.setFormUpdateAvatarListener();
+} else if (urlPath === '/html/list-item/create/') {
+  listeners.setCreateItemListener();
 }
 
 actions.updateNavLinks();

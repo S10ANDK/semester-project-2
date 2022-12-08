@@ -1,2 +1,3 @@
 src/js/api/profile/get-profile.mjs
 src/js/api/profile/update-avatar.mjs
+src/js/api/items/create-item.mjs

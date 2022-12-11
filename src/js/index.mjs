@@ -8,6 +8,8 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.getItemsList();
   listeners.activateFilterDesc();
   listeners.activateFilterAsc();
+} else if (urlPath === '/html/item-specific/') {
+  listeners.getSpecificItem();
 } else if (urlPath === '/html/register/') {
   listeners.setFormRegisterListener();
 } else if (urlPath === '/html/login/') {
@@ -19,6 +21,8 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.setFormUpdateAvatarListener();
 } else if (urlPath === '/html/list-item/create/') {
   listeners.setCreateItemListener();
+} else if (urlPath === '/html/list-item/update/') {
+  listeners.setUpdateItemListener();
 }
 
 actions.updateNavLinks();

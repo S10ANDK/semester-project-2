@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
     <meta
       name="description"
@@ -79,7 +79,75 @@
         </div>
       </div>
     </nav>
-    <main></main>
+    <main>
+      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="mx-auto mw-1000" id="updateItemContainer">
+          <!-- <div class="mx-auto text-center pb-5 pt-md-5">
+            <img
+              src="/assets/hammer.png"
+              class="mw-600 w-100 banner_image border rounded-1"
+              alt="Diversity of people"
+            />
+          </div> -->
+          <h1 class="text-center my-5">Update Listing</h1>
+          <div id="formContainer">
+            <form
+              class="form d-flex flex-column mw-600 mx-sm-auto mx-2"
+              id="updateItemForm"
+            >
+              <label for="title">Title:</label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                class="mt-1 mb-4 form-control"
+                required
+              />
+              <label for="description">Description:</label>
+              <textarea
+                rows="4"
+                name="description"
+                id="description"
+                class="mt-1 mb-4 form-control"
+              ></textarea>
+              <label for="tags">Tags:</label>
+              <input
+                type="text"
+                name="tags"
+                id="tags"
+                class="form-control mt-1 mb-4"
+                minlength="8"
+                placeholder="tags separated with commas"
+              />
+              <label for="media">Images (separate Url's with comma):</label>
+              <input
+                type="url"
+                name="media"
+                id="media"
+                class="form-control mt-1 mb-3"
+                placeholder="https://image.com/example"
+              />
+              <div class="row">
+                <div class="col text-end">
+                  <button
+                    class="btn btn-primary my-4"
+                    id="updateButton"
+                    type="submit"
+                  >
+                    Update
+                  </button>
+                </div>
+                <div class="col text-end">
+                  <button class="btn btn-primary my-4" type="submit">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
     <footer class="bg-primary mt-auto text-center">
       <div>
         <div

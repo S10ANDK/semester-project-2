@@ -11,8 +11,6 @@ export async function setCreateItemListener() {
       let tagsObject = form.tags.value.split(',', '8');
       let mediaObject = form.media.value.split(',', '8');
 
-      //   console.log(itemData.media);
-
       const title = form.title.value;
       const description = form.description.value;
       const tags = tagsObject;

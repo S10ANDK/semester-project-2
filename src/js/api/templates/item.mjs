@@ -132,15 +132,67 @@ export function itemTemplateSingle(itemData) {
   } else {
     const imageGallery = document.createElement('div');
     imageGallery.setAttribute('id', 'imageGallery');
-    for (let i = 0; i < itemData.media.length; i++) {
+    imageGallery.setAttribute('data-bs-ride', 'carousel');
+    imageGallery.setAttribute('data-carousel', '');
+    imageGallery.classList.add('carousel', 'slide');
+    const carouselInner = document.createElement('div');
+    carouselInner.classList.add('carousel-inner');
+    carouselInner.setAttribute('data-slides', '');
+    imageGallery.appendChild(carouselInner);
+
+    const imgContainerFirst = document.createElement('div');
+    imgContainerFirst.classList.add('carousel-item', 'active');
+    imgContainerFirst.setAttribute('data-active', '');
+    const firstImage = document.createElement('img');
+    firstImage.src = itemData.media[0];
+    firstImage.classList.add('d-block', 'w-100');
+    imgContainerFirst.appendChild(firstImage);
+    carouselInner.appendChild(imgContainerFirst);
+
+    for (let i = 1; i < itemData.media.length; i++) {
+      const imgContainer = document.createElement('div');
+      imgContainer.classList.add('carousel-item');
       const img = document.createElement('img');
       img.src = itemData.media[i];
       img.alt = `Image from ${itemData.title}`;
       img.onerror = function imageError() {
         img.src = '/assets/image_placeholder.png';
       };
-      imageGallery.appendChild(img);
+      img.classList.add('d-block', 'w-100');
+      imgContainer.appendChild(img);
+      carouselInner.appendChild(imgContainer);
     }
+
+    const navPrev = document.createElement('a');
+    navPrev.classList.add('carousel-control-prev', 'carousel-button', 'prev');
+    navPrev.setAttribute('role', 'button');
+    navPrev.setAttribute('data-bs-target', '#imageGallery');
+    navPrev.setAttribute('data-carousel-button', 'prev');
+    const spanPrevOne = document.createElement('span');
+    spanPrevOne.classList.add('carousel-control-prev-icon');
+    spanPrevOne.setAttribute('aria-hidden', 'true');
+    const spanPrevTwo = document.createElement('span');
+    spanPrevTwo.classList.add('visually-hidden');
+    spanPrevTwo.innerText = 'Previous';
+    navPrev.appendChild(spanPrevOne);
+    navPrev.appendChild(spanPrevTwo);
+
+    const navNext = document.createElement('a');
+    navNext.classList.add('carousel-control-next', 'carousel-button', 'next');
+    navNext.setAttribute('role', 'button');
+    navNext.setAttribute('data-bs-target', '#imageGallery');
+    navNext.setAttribute('data-carousel-button', 'next');
+    const spanNextOne = document.createElement('span');
+    spanNextOne.classList.add('carousel-control-next-icon');
+    spanNextOne.setAttribute('aria-hidden', 'true');
+    const spanNextTwo = document.createElement('span');
+    spanNextTwo.classList.add('visually-hidden');
+    spanNextTwo.innerText = 'Next';
+    navNext.appendChild(spanNextOne);
+    navNext.appendChild(spanNextTwo);
+
+    carouselInner.appendChild(navPrev);
+    carouselInner.appendChild(navNext);
 
     item.append(imageGallery);
   }

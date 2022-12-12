@@ -22,7 +22,7 @@ import { errorMessage } from '../../components/displayError.mjs';
   const formContainer = document.querySelector('#createItemContainer');
   const form = document.querySelector('#createItemForm');
 
-  if (response.ok ) {
+  if (response.ok) {
     form.style.display = 'none';
     form.classList.remove('d-flex');
     const success = document.createElement('p');

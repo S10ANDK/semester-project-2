@@ -23,6 +23,7 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.setCreateItemListener();
 } else if (urlPath === '/html/list-item/update/') {
   listeners.setUpdateItemListener();
+  listeners.setRemoveItemListener();
 }
 
 actions.updateNavLinks();

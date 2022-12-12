@@ -37,7 +37,7 @@ export function itemTemplate(itemData) {
     img.alt = 'image placeholder';
     item.append(img);
   } else {
-    img.src = itemData.media;
+    img.src = itemData.media[0];
     img.alt = `Image from ${itemData.title}`;
     img.onerror = function imageError() {
       img.src = '/assets/image_placeholder.png';
@@ -116,6 +116,81 @@ export function itemTemplate(itemData) {
   item.appendChild(viewPostButton);
 
   return item;
+}
+
+export function itemTemplateSingle(itemData) {
+  const item = document.createElement('div');
+
+  const img = document.createElement('img');
+  img.classList.add('text-center', 'cardImg');
+  console.log(itemData.media);
+
+  if (itemData.media[0] === undefined) {
+    img.src = '/assets/image_placeholder.png';
+    img.alt = 'image placeholder';
+    item.append(img);
+  } else {
+    const imageGallery = document.createElement('div');
+    imageGallery.setAttribute('id', 'imageGallery');
+    for (let i = 0; i < itemData.media.length; i++) {
+      const img = document.createElement('img');
+      img.src = itemData.media[i];
+      img.alt = `Image from ${itemData.title}`;
+      img.onerror = function imageError() {
+        img.src = '/assets/image_placeholder.png';
+      };
+      imageGallery.appendChild(img);
+    }
+
+    item.append(imageGallery);
+  }
+
+  const itemHeading = document.createElement('h2');
+  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'mt-4');
+  const itemHeadingText = document.createTextNode(itemData.title);
+  itemHeading.appendChild(itemHeadingText);
+  item.appendChild(itemHeading);
+
+  const createdDateP = document.createElement('p');
+  createdDateP.classList.add('createdDate', 'col');
+  const createdDate = document.createTextNode(
+    new Date(itemData.created).toGMTString()
+  );
+  createdDateP.appendChild(createdDate);
+  item.appendChild(createdDateP);
+
+  const updatedDateP = document.createElement('p');
+  updatedDateP.classList.add('updatedDate', 'col');
+  const updatedDate = document.createTextNode(
+    new Date(itemData.updated).toGMTString()
+  );
+  updatedDateP.appendChild(updatedDate);
+  item.appendChild(updatedDateP);
+
+  const endsAtDateP = document.createElement('p');
+  endsAtDateP.classList.add('endsAtDate', 'col');
+  const endsAtDate = document.createTextNode(
+    new Date(itemData.endsAt).toGMTString()
+  );
+  endsAtDateP.appendChild(endsAtDate);
+  item.appendChild(endsAtDateP);
+
+  console.log(itemData.seller.name);
+
+  const nameLocalStorage = localStorage.getItem('name');
+  if (itemData.seller.name === nameLocalStorage) {
+    const idItem = itemData.id;
+    const updateButton = document.createElement('a');
+    updateButton.href = '/html/list-item/update/?id=' + idItem;
+    updateButton.innerText = 'Update listing';
+    item.appendChild(updateButton);
+  }
+
+  return item;
+}
+
+export function renderItemTemplate(itemData, parent) {
+  parent.append(itemTemplateSingle(itemData));
 }
 
 export function renderItemsTemplate(itemDataList, parent) {

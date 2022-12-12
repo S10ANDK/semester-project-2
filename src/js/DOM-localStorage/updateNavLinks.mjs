@@ -17,49 +17,42 @@ export function updateNavLinks() {
     '#registerLinkContainer'
   );
 
-  // const storedAvatar = localStorage.getItem('avatar');
+  const avatar = document.createElement('img');
+  avatar.classList.add('profile_image-small', 'rounded-2');
+  avatar.src = '/assets/avatar-stock.png';
+  avatarLink.append(avatar);
+
   const storedName = localStorage.getItem('name');
+  const signedInAsText = document.createElement('p');
+  signedInAsText.classList.add('signedInAsText');
+  signedInAsText.append(`Signed in as: ${storedName}`);
+  signedInAsContainer.append(signedInAsText);
 
   if (localStorage.getItem('name') === null) {
-    avatarContainer.classList.add('d-none');
+    loginLinkContainer.classList.remove('d-none');
+    loginLinkContainer.classList.add('d-block');
+    registerLinkContainer.classList.remove('d-none');
+    registerLinkContainer.classList.add('d-block');
     signedInAsContainer.classList.add('d-none');
+    viewProfileLinkContainer.classList.remove('d-block');
     viewProfileLinkContainer.classList.add('d-none');
     listItemLinkContainer.classList.add('d-none');
+    avatarContainer.classList.remove('d-lg-inline');
+    avatarContainer.classList.add('d-none');
+    signedInAsContainer.classList.remove('d-block');
+    signedInAsContainer.classList.add('d-none');
   } else {
-    const signedInAsText = document.createElement('p');
-    signedInAsText.classList.add('signedInAsText');
-    signedInAsText.append(`Signed in as: ${storedName}`);
-    signedInAsContainer.append(signedInAsText);
-    loginLinkContainer.style.display = 'none';
-    registerLinkContainer.style.display = 'none';
-
-    // const jpg = '.jpg';
-    const avatar = document.createElement('img');
+    signedInAsContainer.classList.remove('d-none');
+    signedInAsContainer.classList.add('d-block');
+    loginLinkContainer.classList.remove('d-block');
+    loginLinkContainer.classList.add('d-none');
+    registerLinkContainer.classList.remove('d-block');
+    registerLinkContainer.classList.add('d-none');
+    listItemLinkContainer.classList.remove('d-none');
+    listItemLinkContainer.classList.add('d-block');
+    avatarContainer.classList.remove('d-lg-none');
     avatarContainer.classList.add('d-lg-inline');
-    avatar.classList.add('profile_image-small', 'rounded-2');
-    avatar.src = '/assets/avatar-stock.png';
-    avatarLink.append(avatar);
-    // if (
-    //   typeof storedAvatar[0] === 'string' &&
-    //   !storedAvatar[0].includes(
-    //     '.jpg',
-    //     '.jpeg',
-    //     '.png',
-    //     '.webP',
-    //     '.SVG',
-    //     '.GIF'
-    //   )
-    // ) {
-    //   const avatarUrl = `${storedAvatar}${jpg}`;
-    //   avatar.src = avatarUrl;
-    //   avatarLink.append(avatar);
-    // } else if (typeof storedAvatar[0] === 'string') {
-    //   const avatarUrl = storedAvatar;
-    //   avatar.src = avatarUrl;
-    //   avatarLink.append(avatar);
-    // } else {
-    //   avatar.src = '/assets/avatar-stock.png';
-    //   avatarLink.append(avatar);
-    // }
+    viewProfileLinkContainer.classList.remove('d-none');
+    viewProfileLinkContainer.classList.add('d-block');
   }
 }

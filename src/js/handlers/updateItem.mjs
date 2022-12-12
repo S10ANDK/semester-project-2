@@ -34,17 +34,26 @@ export async function setUpdateItemListener() {
       const tags = tagsObject;
       const media = mediaObject;
 
-      const item = {
-        id,
-        title,
-        description,
-        tags,
-        media,
-      };
-
-      item.id = id;
-
-      updateListing(item);
+      if (mediaObject[0] === '') {
+        const item = {
+          title,
+          description,
+          tags,
+        };
+        item.id = id;
+        console.log(item);
+        updateListing(item);
+      } else {
+        const item = {
+          title,
+          description,
+          tags,
+          media,
+        };
+        item.id = id;
+        console.log(item);
+        updateListing(item);
+      }
     });
   }
 }

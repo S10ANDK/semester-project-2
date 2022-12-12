@@ -279,6 +279,18 @@ a {
   color: $orange;
 }
 
+#imageGallery {
+  height: 450px;
+  max-width: 450px;
+  background-color: #e0e0e0;
+}
+
+.galleryImages {
+  object-fit: contain;
+  min-width: 450px;
+  height: 450px;
+}
+
 .banner_image {
   max-height: 250px;
   object-fit: cover;

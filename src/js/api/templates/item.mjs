@@ -120,6 +120,7 @@ export function itemTemplate(itemData) {
 
 export function itemTemplateSingle(itemData) {
   const item = document.createElement('div');
+  item.classList.add('pt-5', 'px-lg-0');
 
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
@@ -128,31 +129,35 @@ export function itemTemplateSingle(itemData) {
   if (itemData.media[0] === undefined) {
     img.src = '/assets/image_placeholder.png';
     img.alt = 'image placeholder';
+    img.classList.add('galleryImages');
     item.append(img);
   } else {
     const imageGallery = document.createElement('div');
     imageGallery.setAttribute('id', 'imageGallery');
     imageGallery.setAttribute('data-bs-ride', 'carousel');
     imageGallery.setAttribute('data-carousel', '');
-    imageGallery.classList.add('carousel', 'slide');
+    imageGallery.classList.add('carousel', 'slide', 'rounded-4');
     const carouselInner = document.createElement('div');
     carouselInner.classList.add('carousel-inner');
-    carouselInner.setAttribute('data-slides', '');
     imageGallery.appendChild(carouselInner);
 
     const imgContainerFirst = document.createElement('div');
     imgContainerFirst.classList.add('carousel-item', 'active');
-    imgContainerFirst.setAttribute('data-active', '');
     const firstImage = document.createElement('img');
+    firstImage.classList.add('galleryImages');
     firstImage.src = itemData.media[0];
-    firstImage.classList.add('d-block', 'w-100');
+    firstImage.classList.add('d-block', 'w-100', 'rounded-4');
     imgContainerFirst.appendChild(firstImage);
     carouselInner.appendChild(imgContainerFirst);
+    firstImage.onerror = function imageError() {
+      firstImage.src = '/assets/image_placeholder.png';
+    };
 
     for (let i = 1; i < itemData.media.length; i++) {
       const imgContainer = document.createElement('div');
       imgContainer.classList.add('carousel-item');
       const img = document.createElement('img');
+      img.classList.add('galleryImages', 'rounded-4');
       img.src = itemData.media[i];
       img.alt = `Image from ${itemData.title}`;
       img.onerror = function imageError() {
@@ -163,11 +168,11 @@ export function itemTemplateSingle(itemData) {
       carouselInner.appendChild(imgContainer);
     }
 
-    const navPrev = document.createElement('a');
-    navPrev.classList.add('carousel-control-prev', 'carousel-button', 'prev');
-    navPrev.setAttribute('role', 'button');
+    const navPrev = document.createElement('button');
+    navPrev.classList.add('carousel-control-prev');
+    navPrev.setAttribute('type', 'button');
     navPrev.setAttribute('data-bs-target', '#imageGallery');
-    navPrev.setAttribute('data-carousel-button', 'prev');
+    navPrev.setAttribute('data-bs-slide', 'prev');
     const spanPrevOne = document.createElement('span');
     spanPrevOne.classList.add('carousel-control-prev-icon');
     spanPrevOne.setAttribute('aria-hidden', 'true');
@@ -177,11 +182,11 @@ export function itemTemplateSingle(itemData) {
     navPrev.appendChild(spanPrevOne);
     navPrev.appendChild(spanPrevTwo);
 
-    const navNext = document.createElement('a');
-    navNext.classList.add('carousel-control-next', 'carousel-button', 'next');
-    navNext.setAttribute('role', 'button');
+    const navNext = document.createElement('button');
+    navNext.classList.add('carousel-control-next');
+    navNext.setAttribute('type', 'button');
     navNext.setAttribute('data-bs-target', '#imageGallery');
-    navNext.setAttribute('data-carousel-button', 'next');
+    navNext.setAttribute('data-bs-slide', 'next');
     const spanNextOne = document.createElement('span');
     spanNextOne.classList.add('carousel-control-next-icon');
     spanNextOne.setAttribute('aria-hidden', 'true');
@@ -191,8 +196,8 @@ export function itemTemplateSingle(itemData) {
     navNext.appendChild(spanNextOne);
     navNext.appendChild(spanNextTwo);
 
-    carouselInner.appendChild(navPrev);
-    carouselInner.appendChild(navNext);
+    imageGallery.appendChild(navPrev);
+    imageGallery.appendChild(navNext);
 
     item.append(imageGallery);
   }

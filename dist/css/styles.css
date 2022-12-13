@@ -10940,7 +10940,7 @@ a {
 }
 
 .bidsAmount {
-  color: #000;
+  color: #313547;
   font-family: futura PT;
   font-weight: 600;
   font-size: 1.2nrem;
@@ -10972,15 +10972,23 @@ a {
 
 .btn-outline-success {
   color: #fff;
-  background: #e87e51;
-  border-color: #e87e51;
+  background: #4c5970;
+  border-color: #4c5970;
 }
 
+.btn-outline-warning {
+  color: #fff;
+  background: #313547;
+  border-color: #313547;
+}
+
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
 .btn-outline-success:hover,
 .btn-outline-success:focus {
   color: #fff;
-  border-color: #d07853;
-  background-color: #d07853;
+  border-color: #313547;
+  background-color: #313547;
 }
 
 .btn-info {
@@ -10994,14 +11002,13 @@ a {
 
 .btn-outline-info:hover,
 .btn-outline-info:focus {
-  color: #ffffff;
-  border-color: #d07853;
-  background-color: #d07853;
+  color: #fff;
+  border-color: #313547;
+  background-color: #313547;
 }
 
 #profileInfoContainer {
-  background-color: #4c5970;
-  color: #ffffff;
+  border: #313547;
 }
 
 #logOutButton {
@@ -11019,17 +11026,19 @@ a {
 .editAvatarLink {
   transform: translateX(-75px);
   max-width: 110px;
-  color: #ffffff;
+  color: #000;
 }
 
 .editAvatarLink:hover {
-  color: #ebebeb;
+  color: #4c4c4c;
 }
 
 .creditsDisplayed {
+  width: 200px;
   font-style: Futura PT;
   font-size: 2rem;
   color: #e87e51;
+  background-color: #000;
 }
 
 #imageGallery {

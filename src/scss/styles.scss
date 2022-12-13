@@ -187,7 +187,7 @@ a {
 }
 
 .bidsAmount {
-  color: $black;
+  color: $blue;
   font-family: futura PT;
   font-weight: 600;
   font-size: 1.2nrem;
@@ -219,15 +219,23 @@ a {
 
 .btn-outline-success {
   color: $white;
-  background: $orange;
-  border-color: $orange;
+  background: $primary;
+  border-color: $primary;
 }
 
+.btn-outline-warning {
+  color: $white;
+  background: $blue;
+  border-color: $blue;
+}
+
+.btn-outline-warning:hover,
+.btn-outline-warning:focus,
 .btn-outline-success:hover,
 .btn-outline-success:focus {
   color: $white;
-  border-color: $orange-500;
-  background-color: $orange-500;
+  border-color: $blue;
+  background-color: $blue;
 }
 
 .btn-info {
@@ -241,14 +249,15 @@ a {
 
 .btn-outline-info:hover,
 .btn-outline-info:focus {
-  color: #ffffff;
-  border-color: $orange-500;
-  background-color: $orange-500;
+  color: $white;
+  border-color: $blue;
+  background-color: $blue;
 }
 
 #profileInfoContainer {
-  background-color: $primary;
-  color: #ffffff;
+  // background-color: $secondary;
+  // color: $black;
+  border: #313547;
 }
 
 #logOutButton {
@@ -266,17 +275,19 @@ a {
 .editAvatarLink {
   transform: translateX(-75px);
   max-width: 110px;
-  color: #ffffff;
+  color: $black;
 }
 
 .editAvatarLink:hover {
-  color: #ebebeb;
+  color: #4c4c4c;
 }
 
 .creditsDisplayed {
+  width: 200px;
   font-style: Futura PT;
   font-size: 2rem;
   color: $orange;
+  background-color: $black;
 }
 
 #imageGallery {

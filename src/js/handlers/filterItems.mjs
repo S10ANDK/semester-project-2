@@ -19,7 +19,7 @@ async function filterDescending() {
     const container = document.querySelector('#listingsContainer');
     container.innerHTML = '';
     templates.renderItemsTemplate(items, container);
-    filterNewestButton.classList.add('btn-success', 'btn-outline-success');
+    filterNewestButton.classList.add('btn-warning', 'btn-outline-warning');
     filterNewestButton.classList.remove('btn-info', 'btn-outline-info');
     filterOldestButton.classList.add('btn-info', 'btn-outline-info');
     filterOldestButton.classList.remove('btn-success', 'btn-outline-success');
@@ -46,7 +46,7 @@ async function filterAscending() {
     const container = document.querySelector('#listingsContainer');
     container.innerHTML = '';
     templates.renderItemsTemplate(items, container);
-    filterOldestButton.classList.add('btn-success', 'btn-outline-success');
+    filterOldestButton.classList.add('btn-warning', 'btn-outline-warning');
     filterOldestButton.classList.remove('btn-info', 'btn-outline-info');
     filterNewestButton.classList.add('btn-info', 'btn-outline-info');
     filterNewestButton.classList.remove('btn-success', 'btn-outline-success');

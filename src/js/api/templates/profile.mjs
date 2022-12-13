@@ -15,7 +15,14 @@ export function profileTemplate(profileData) {
   profileContentContainer.appendChild(greetingContainer);
 
   const profileInfoContainer = document.createElement('div');
-  profileInfoContainer.classList.add('py-5', 'mw-600', 'mx-auto', 'rounded-3');
+  profileInfoContainer.classList.add(
+    'py-5',
+    'mw-600',
+    'mx-auto',
+    'border',
+    'border-2',
+    'rounded-3'
+  );
   profileInfoContainer.setAttribute('id', 'profileInfoContainer');
 
   const avatar = document.createElement('img');
@@ -81,7 +88,7 @@ export function profileTemplate(profileData) {
   profileContentContainer.appendChild(profileInfoContainer);
 
   const credits = document.createElement('p');
-  credits.classList.add('creditsDisplayed');
+  credits.classList.add('creditsDisplayed', 'p-3', 'mx-auto', 'rounded-3');
   const creditsNumber = document.createTextNode(profileData.credits);
   credits.append(creditsNumber);
   profileInfoContainer.appendChild(credits);

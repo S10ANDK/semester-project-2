@@ -22,7 +22,7 @@ export async function getListingUnauthorized() {
   const itemId = params.get('id');
 
   const getListingUrl = `${API_AUCTION_URL}${action}/${itemId}?_seller=true&_bids=true`;
-  console.log(getListingUrl);
+  // console.log(getListingUrl);
   const response = await fetch(getListingUrl, {
     headers: {
       'Content-Type': 'application/json',

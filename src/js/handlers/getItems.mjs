@@ -26,7 +26,6 @@ export async function getSpecificItem() {
   const listingContainer = document.querySelector('#itemContainer');
   try {
     const item = await itemMethods.getListingUnauthorized();
-    // const container = document.querySelector('#itemContainer');
     listingContainer.innerHTML = '';
     templates.renderItemTemplate(item, listingContainer);
   } catch {

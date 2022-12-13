@@ -50,7 +50,6 @@ export async function setUpdateItemListener() {
           tags,
           media,
         };
-        item.id = id;
         console.log(item);
         updateListing(item);
       }

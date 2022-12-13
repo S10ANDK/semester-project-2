@@ -83,27 +83,36 @@
       </div>
     </nav>
     <main>
-      <div class="mx-3 bg-white mx-auto mw-1200">
-        <div
-          class="row mx-3 mw-1000 mx-auto fade-in min-vh-100"
-          id="itemContainer"
-        >
-          <div class="loader-container">
-            <div class="loading-indicator"></div>
-          </div>
-        </div>
-        <div class="mx-3 mw-1000 mx-auto" id="bidFormContainer">
-          <form id="biddingForm" class="form">
-            <!-- <label for="amount" id="amount"></label> -->
-            <input type="number" id="amount" name="amount" required />
-            <button
-              type="submit"
-              id="bidButton"
-              class="btn btn-success btn-outline-success"
+      <div class="row mx-lg-auto bg-white mw-1200 min-vh-100">
+        <div class="mx-auto mw-1000" id="updateAvatarContainer">
+          <h1 class="text-center my-5">Update avatar</h1>
+          <div id="avatarFormContainer">
+            <form
+              method="PUT"
+              class="form d-flex flex-column mw-600 mx-sm-auto mx-2"
+              id="formUpdateAvatar"
             >
-              Submit bid
-            </button>
-          </form>
+              <p class="mb-5">
+                Update the avatar for your Auction Treasury profile. We will
+                only accept a URL (a link to an image from the internet).
+              </p>
+              <label for="avatar">Avatar:</label>
+              <input
+                type="media"
+                name="avatar"
+                id="avatar"
+                class="form-control mt-1 mb-3"
+                placeholder="https://image.com/example"
+                required
+                title="Avatar must be a URL"
+              />
+              <div class="col text-end">
+                <button class="btn btn-primary my-4" type="submit">
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </main>
@@ -127,15 +136,8 @@
         />
       </div>
     </footer>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
 
     <script
-      defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"

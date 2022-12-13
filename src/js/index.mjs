@@ -9,6 +9,7 @@ if (urlPath === '/index.html' || urlPath === '/') {
   listeners.activateFilterDesc();
   listeners.activateFilterAsc();
 } else if (urlPath === '/html/item-specific/') {
+  listeners.setFormBidOnItemListener();
   listeners.getSpecificItem();
 } else if (urlPath === '/html/register/') {
   listeners.setFormRegisterListener();

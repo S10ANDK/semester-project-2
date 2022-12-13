@@ -124,7 +124,7 @@ export function itemTemplateSingle(itemData) {
 
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
-  console.log(itemData.media);
+  // console.log(itemData.media);
 
   if (itemData.media[0] === undefined) {
     img.src = '/assets/image_placeholder.png';
@@ -269,49 +269,56 @@ export function itemTemplateSingle(itemData) {
     item.appendChild(bidAmount);
   }
 
-  // Adds input and button for making bids on listing if user is logged in.
-  const biddingFormContainer = document.createElement('div');
+  // Adds input and button for making bids on listing if user is logged in
+  // const biddingFormContainer = document.createElement('div');
 
-  if (localStorage.getItem('name') === null) {
-    const loginMessage = document.createElement('p');
-    const loginMessageText =
-      'Please log in to our website to bid on this listing.';
-    loginMessage.append(loginMessageText);
-    biddingFormContainer.appendChild(loginMessage);
-    item.appendChild(biddingFormContainer);
-  } else {
-    const biddingForm = document.createElement('form');
-    biddingForm.setAttribute('id', 'biddingForm');
-    biddingForm.classList.add('form');
+  // if (localStorage.getItem('name') === null) {
+  //   const loginMessage = document.createElement('p');
+  //   const loginMessageText =
+  //     'Please log in to our website to bid on this listing.';
+  //   loginMessage.append(loginMessageText);
+  //   biddingFormContainer.appendChild(loginMessage);
+  //   item.appendChild(biddingFormContainer);
+  // } else {
+  //   const biddingForm = document.createElement('form');
+  //   biddingForm.setAttribute('id', 'biddingForm');
+  //   biddingForm.classList.add('form');
 
-    const inputAmount = document.createElement('input');
-    inputAmount.setAttribute('type', 'number');
-    inputAmount.setAttribute('required', '');
+  // const amountLabel = document.createElement('label');
+  // amountLabel.setAttribute('for', 'amount');
+  // amountLabel.innerText = ''
 
-    const bidButton = document.createElement('button');
-    bidButton.innerText = 'Submit bid';
-    bidButton.setAttribute('type', 'submit');
-    bidButton.classList.add('btn', 'btn-success', 'btn-outline-success');
+  // const inputAmount = document.createElement('input');
+  // inputAmount.setAttribute('type', 'number');
+  // inputAmount.setAttribute('name', 'amount');
+  // inputAmount.setAttribute('id', 'amount');
+  // inputAmount.setAttribute('required', '');
 
-    biddingForm.appendChild(inputAmount);
-    biddingForm.appendChild(bidButton);
-    biddingFormContainer.appendChild(biddingForm);
-    item.appendChild(biddingFormContainer);
+  // const bidButton = document.createElement('button');
+  // bidButton.innerText = 'Submit bid';
+  // bidButton.setAttribute('type', 'button');
+  // bidButton.setAttribute('id', 'bidButton');
+  // bidButton.classList.add('btn', 'btn-success', 'btn-outline-success');
 
-    // display listing description onto page
-    const descriptionContainer = document.createElement('div');
-    const descriptionTitle = document.createElement('p');
-    descriptionTitle.innerText = 'Description:';
-    descriptionContainer.appendChild(descriptionTitle);
-    const description = document.createElement('p');
-    const descriptionText = itemData.description;
-    description.append(descriptionText);
-    descriptionContainer.appendChild(description);
+  // biddingForm.appendChild(inputAmount);
+  // biddingForm.appendChild(bidButton);
+  // biddingFormContainer.appendChild(biddingForm);
+  // item.appendChild(biddingFormContainer);
+  // }
 
-    item.appendChild(descriptionContainer);
-  }
+  // display listing description onto page
+  const descriptionContainer = document.createElement('div');
+  const descriptionTitle = document.createElement('p');
+  descriptionTitle.innerText = 'Description:';
+  descriptionContainer.appendChild(descriptionTitle);
+  const description = document.createElement('p');
+  const descriptionText = itemData.description;
+  description.append(descriptionText);
+  descriptionContainer.appendChild(description);
+  item.appendChild(descriptionContainer);
 
-  console.log(itemData.seller);
+  // console.log(itemData.id);
+  // console.log(itemData.seller);
 
   // display bidders onto page
   for (let i = 0; i < itemData.bids.length; i++) {

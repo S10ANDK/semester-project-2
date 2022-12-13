@@ -232,7 +232,116 @@ export function itemTemplateSingle(itemData) {
   endsAtDateP.appendChild(endsAtDate);
   item.appendChild(endsAtDateP);
 
-  console.log(itemData.seller.name);
+  // tags displayed onto page
+  for (let i = 0; i < itemData.tags.length; i++) {
+    const tagsContainer = document.createElement('div');
+
+    if (itemData.tags[0] === '') {
+      const noTags = document.createElement('p');
+      noTags.innerText = 'No tags..';
+      noTags.classList.add('fst-italic');
+      tagsContainer.appendChild(noTags);
+      item.appendChild(tagsContainer);
+    } else {
+      const tag = document.createElement('p');
+      const tagText = itemData.tags[i];
+      tag.append(tagText);
+      tagsContainer.appendChild(tag);
+      item.appendChild(tagsContainer);
+    }
+  }
+
+  // display amount of bids for listing onto page
+  const bidAmount = document.createElement('p');
+  bidAmount.classList.add('col', 'bidsAmount');
+
+  if (itemData._count.bids === 1) {
+    const currentBidText = document.createTextNode(
+      `${itemData._count.bids} bid`
+    );
+    bidAmount.appendChild(currentBidText);
+    item.appendChild(bidAmount);
+  } else {
+    const currentBidText = document.createTextNode(
+      `${itemData._count.bids} bids`
+    );
+    bidAmount.appendChild(currentBidText);
+    item.appendChild(bidAmount);
+  }
+
+  // Adds input and button for making bids on listing if user is logged in.
+  const biddingFormContainer = document.createElement('div');
+
+  if (localStorage.getItem('name') === null) {
+    const loginMessage = document.createElement('p');
+    const loginMessageText =
+      'Please log in to our website to bid on this listing.';
+    loginMessage.append(loginMessageText);
+    biddingFormContainer.appendChild(loginMessage);
+    item.appendChild(biddingFormContainer);
+  } else {
+    const biddingForm = document.createElement('form');
+    biddingForm.setAttribute('id', 'biddingForm');
+    biddingForm.classList.add('form');
+
+    const inputAmount = document.createElement('input');
+    inputAmount.setAttribute('type', 'number');
+    inputAmount.setAttribute('required', '');
+
+    const bidButton = document.createElement('button');
+    bidButton.innerText = 'Submit bid';
+    bidButton.setAttribute('type', 'submit');
+    bidButton.classList.add('btn', 'btn-success', 'btn-outline-success');
+
+    biddingForm.appendChild(inputAmount);
+    biddingForm.appendChild(bidButton);
+    biddingFormContainer.appendChild(biddingForm);
+    item.appendChild(biddingFormContainer);
+
+    // display listing description onto page
+    const descriptionContainer = document.createElement('div');
+    const descriptionTitle = document.createElement('p');
+    descriptionTitle.innerText = 'Description:';
+    descriptionContainer.appendChild(descriptionTitle);
+    const description = document.createElement('p');
+    const descriptionText = itemData.description;
+    description.append(descriptionText);
+    descriptionContainer.appendChild(description);
+
+    item.appendChild(descriptionContainer);
+  }
+
+  console.log(itemData.seller);
+
+  // display bidders onto page
+  for (let i = 0; i < itemData.bids.length; i++) {
+    const bidderContainer = document.createElement('div');
+    bidderContainer.classList.add('py-4');
+
+    const bidderNameP = document.createElement('p');
+    const bidderNameText = itemData.bids[i].bidderName;
+    bidderNameP.append(bidderNameText);
+    bidderContainer.append(bidderNameP);
+
+    const bidderAmount = document.createElement('p');
+    const bidderAmountNumber = itemData.bids[i].amount;
+    bidderAmount.append(bidderAmountNumber);
+    bidderContainer.appendChild(bidderAmount);
+
+    const bidderCreatedDate = document.createElement('p');
+    const bidderCreatedDateText = document.createTextNode(
+      new Date(itemData.bids[i].created).toGMTString()
+    );
+    bidderCreatedDate.append(bidderCreatedDateText);
+    bidderContainer.appendChild(bidderCreatedDateText);
+
+    item.appendChild(bidderContainer);
+  }
+
+  // display sellers name onto page
+  const sellerName = document.querySelector('p');
+  const sellerNameText = itemData.seller.name;
+  sellerName.append(sellerNameText);
 
   const nameLocalStorage = localStorage.getItem('name');
   if (itemData.seller.name === nameLocalStorage) {

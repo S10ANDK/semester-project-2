@@ -386,9 +386,10 @@ export function itemTemplateSingle(itemData) {
   }
 
   // display sellers name onto page
-  const sellerName = document.querySelector('p');
+  const sellerName = document.createElement('p');
   const sellerNameText = itemData.seller.name;
   sellerName.append(sellerNameText);
+  item.appendChild(sellerName);
 
   const nameLocalStorage = localStorage.getItem('name');
   if (itemData.seller.name === nameLocalStorage) {

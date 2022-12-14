@@ -87,28 +87,72 @@
         id="pageContainerItemSpecific"
         class="mx-3 bg-white mx-auto mw-1200 min-vh-100 pb-5"
       >
+        <div
+          class="modal fade"
+          id="bidModal"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+          aria-labelledby="staticBackdropLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                  Make a bid
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mx-3 mw-1000 mx-auto" id="bidFormContainer">
+                  <form id="biddingForm" class="form text-center">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="amount"
+                      name="amount"
+                      required
+                    />
+                    <div class="text-end">
+                      <button
+                        type="submit"
+                        id="bidButton"
+                        class="btn btn-success btn-outline-success mt-3 mb-1"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <!-- <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Understood
+                </button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
         <div id="itemContainer" class="row mx-3 mw-1000 mx-auto fade-in">
           <div id="loaderContainer" class="loader-container">
             <div class="loading-indicator"></div>
           </div>
           <div id="contentContainerOne"></div>
         </div>
-
-        <div id="itemContainerTwo">
-          <div class="mx-3 mw-1000 mx-auto" id="bidFormContainer">
-            <form id="biddingForm" class="form">
-              <input type="number" id="amount" name="amount" required />
-              <button
-                type="submit"
-                id="bidButton"
-                class="btn btn-success btn-outline-success"
-              >
-                Submit bid
-              </button>
-            </form>
-          </div>
-        </div>
-        <div id="itemContainerThree"></div>
       </div>
     </main>
     <footer class="bg-primary mt-auto text-center">

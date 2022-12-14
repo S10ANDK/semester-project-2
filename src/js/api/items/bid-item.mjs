@@ -29,7 +29,12 @@ export async function bidOnItem(itemData) {
     const successMessage = document.createElement('p');
     const successMessageText = 'Bid successfully submitted';
     successMessage.append(successMessageText);
+    const icon = document.createElement('img');
+    icon.setAttribute('src', '/assets/success_icon.png');
+    icon.classList.add('success_icon-small', 'text-center', 'mx-auto');
+
     formContainer.appendChild(successMessage);
+    formContainer.appendChild(icon);
     setTimeout(function () {
       document.location.reload();
     }, 2500)
@@ -37,13 +42,11 @@ export async function bidOnItem(itemData) {
     console.log('An error has occured');
     console.log(response.status);
     const formContainer = document.querySelector('#biddingForm');
-    formContainer.classList.add('fade-in');
+    formContainer.classList.add('fade-in', 'pb-3');
     formContainer.innerHTML = errorMessage(
-      'An error has occured. Please try again.'
+      'Listing might have expired, or your bid is too low. Please try again.'
     );
-    setTimeout(function () {
-      document.location.reload();
-    }, 2500)
   }
+  console.log(response);
   return await response.json();
 }

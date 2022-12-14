@@ -302,6 +302,14 @@ a {
   height: 450px;
 }
 
+.itemHeader {
+  margin-top: 100px;
+}
+
+.bid-button {
+  width: 320px;
+}
+
 .banner_image {
   max-height: 250px;
   object-fit: cover;
@@ -312,13 +320,18 @@ a {
   height: auto;
 }
 
+.success_icon-small {
+  width: 30px;
+  height: auto;
+}
+
 .fade-in {
   animation: blog-fade-effect ease 1.8s forwards;
 }
 
 .error_message {
   max-width: 600px;
-  color: red;
+  color: rgb(191, 54, 54);
   padding: 20px;
   margin: auto;
 }

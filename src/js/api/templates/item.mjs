@@ -119,8 +119,9 @@ export function itemTemplate(itemData) {
 }
 
 export function itemTemplateSingle(itemData) {
-  const item = document.querySelector('#contentContainerOne');
-  item.classList.add('pt-5', 'px-lg-0');
+  // const item = document.querySelector('#contentContainerOne');
+  const item = document.createElement('div');
+  item.classList.add('px-lg-0');
 
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
@@ -135,7 +136,15 @@ export function itemTemplateSingle(itemData) {
     imageGallery.setAttribute('id', 'imageGallery');
     imageGallery.setAttribute('data-bs-ride', 'carousel');
     imageGallery.setAttribute('data-carousel', '');
-    imageGallery.classList.add('carousel', 'slide', 'rounded-4');
+    imageGallery.classList.add(
+      'carousel',
+      'slide',
+      'rounded-4',
+      'col',
+      'col-lg-5',
+      'mx-auto',
+      'mx-lg-0'
+    );
     const carouselInner = document.createElement('div');
     carouselInner.classList.add('carousel-inner');
     imageGallery.appendChild(carouselInner);
@@ -201,12 +210,68 @@ export function itemTemplateSingle(itemData) {
     item.append(imageGallery);
   }
 
+  // Creating and displaying the "make a bid" button onto page
+  const makeABidButtonContainer = document.createElement('div');
+  makeABidButtonContainer.classList.add(
+    'col',
+    'col-lg-5',
+    'text-center',
+    'py-4'
+  );
+  const makeABidButton = document.createElement('button');
+  makeABidButton.classList.add(
+    'btn',
+    'btn-success',
+    'btn-outline-success',
+    'bid-button',
+    'py-2'
+  );
+  makeABidButton.setAttribute('type', 'button');
+  makeABidButton.setAttribute('data-bs-toggle', 'modal');
+  makeABidButton.setAttribute('data-bs-target', '#bidModal');
+  const makeABidButtonText = 'Make a bid';
+  makeABidButton.append(makeABidButtonText);
+
+  const listingDate = itemData.endsAt;
+  let listingDateYear = listingDate;
+  listingDateYear = listingDateYear.split('-')[0];
+  let listingDateMonth = listingDate;
+  listingDateMonth = listingDateMonth.split('-')[1];
+  let listingDateDay = listingDate;
+  listingDateDay = listingDateDay.split('T')[0];
+  let listingDateDaySubStringyfied = listingDateDay.substring(8);
+
+  const listingDateformatted =
+    listingDateYear + listingDateMonth + listingDateDaySubStringyfied;
+  let listingDateParsed = parseInt(listingDateformatted);
+
+  const date = new Date();
+  let currentDay = date.getDate();
+  let currentMonth = date.getMonth() + 1;
+  let currentYear = date.getFullYear();
+  let currentDate = `${currentYear}${currentMonth}${currentDay}`;
+  const currentDateParsed = parseInt(currentDate);
+
+  if (listingDateParsed <= currentDateParsed) {
+    makeABidButton.classList.add('d-none');
+    const listingExpiredMessage = document.createElement('p');
+    listingExpiredMessage.classList.add('fst-italic', 'my-4', 'ms-4');
+    const listingExpiredMessageText = 'Listing has expired...';
+    listingExpiredMessage.append(listingExpiredMessageText);
+    item.appendChild(listingExpiredMessage);
+  }
+
+  makeABidButtonContainer.appendChild(makeABidButton);
+  item.appendChild(makeABidButtonContainer);
+
+  // Creating and displaying listing header
   const itemHeading = document.createElement('h2');
-  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'mt-4');
+  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'itemHeader');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   item.appendChild(itemHeading);
 
+  // Displaying relevant dates
   const createdDateP = document.createElement('p');
   createdDateP.classList.add('createdDate', 'col');
   const createdDate = document.createTextNode(

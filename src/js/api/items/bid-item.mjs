@@ -1,5 +1,5 @@
 import { API_AUCTION_URL } from '../constants.mjs';
-// import { errorMessage } from '../../components/displayError.mjs';
+import { errorMessage } from '../../components/displayError.mjs';
 
 export async function bidOnItem(itemData) {
   const method = 'POST';
@@ -21,5 +21,29 @@ export async function bidOnItem(itemData) {
   });
   console.log(bidOnItemUrl);
   console.log(response);
+
+  if (response.ok) {
+    const formContainer = document.querySelector('#biddingForm');
+    formContainer.classList.add('fade-in');
+    formContainer.innerHTML = '';
+    const successMessage = document.createElement('p');
+    const successMessageText = 'Bid successfully submitted';
+    successMessage.append(successMessageText);
+    formContainer.appendChild(successMessage);
+    setTimeout(function () {
+      document.location.reload();
+    }, 2500)
+  } else {
+    console.log('An error has occured');
+    console.log(response.status);
+    const formContainer = document.querySelector('#biddingForm');
+    formContainer.classList.add('fade-in');
+    formContainer.innerHTML = errorMessage(
+      'An error has occured. Please try again.'
+    );
+    setTimeout(function () {
+      document.location.reload();
+    }, 2500)
+  }
   return await response.json();
 }

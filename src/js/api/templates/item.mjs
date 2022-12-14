@@ -124,7 +124,6 @@ export function itemTemplateSingle(itemData) {
 
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
-  // console.log(itemData.media);
 
   if (itemData.media[0] === undefined) {
     img.src = '/assets/image_placeholder.png';
@@ -321,28 +320,69 @@ export function itemTemplateSingle(itemData) {
   // console.log(itemData.seller);
 
   // display bidders onto page
-  for (let i = 0; i < itemData.bids.length; i++) {
-    const bidderContainer = document.createElement('div');
-    bidderContainer.classList.add('py-4');
 
-    const bidderNameP = document.createElement('p');
-    const bidderNameText = itemData.bids[i].bidderName;
-    bidderNameP.append(bidderNameText);
-    bidderContainer.append(bidderNameP);
+  // console.log(itemData.bids.length);
+  if (itemData.bids.length === 0) {
+    const noBidsMessage = document.createElement('p');
+    const noBidsMessageText =
+      'No current bids. Be the first to bid on this item!';
+    noBidsMessage.append(noBidsMessageText);
 
-    const bidderAmount = document.createElement('p');
-    const bidderAmountNumber = itemData.bids[i].amount;
-    bidderAmount.append(bidderAmountNumber);
-    bidderContainer.appendChild(bidderAmount);
+    item.appendChild(noBidsMessage);
+  } else {
+    const biddersHeader = document.createElement('h2');
+    biddersHeader.classList.add('py-3');
+    const biddersHeaderText = 'Bids made on listing:';
+    biddersHeader.append(biddersHeaderText);
 
-    const bidderCreatedDate = document.createElement('p');
-    const bidderCreatedDateText = document.createTextNode(
-      new Date(itemData.bids[i].created).toGMTString()
-    );
-    bidderCreatedDate.append(bidderCreatedDateText);
-    bidderContainer.appendChild(bidderCreatedDateText);
+    item.appendChild(biddersHeader);
 
-    item.appendChild(bidderContainer);
+    for (let i = 0; i < itemData.bids.length; i++) {
+      const allBidsContainer = document.createElement('div');
+      allBidsContainer.classList.add('row');
+
+      const bidderContainer = document.createElement('div');
+      bidderContainer.classList.add(
+        'py-3',
+        'col',
+        'col-md-6',
+        'border',
+        'border-primary',
+        'rounded-2',
+        'my-3'
+      );
+
+      const bidderCreatedDate = document.createElement('p');
+      bidderCreatedDate.classList.add('createdDate', 'px-3', 'pb-2', 'ps-lg-4');
+      const bidderCreatedDateText = document.createTextNode(
+        new Date(itemData.bids[i].created).toGMTString()
+      );
+      bidderCreatedDate.append(bidderCreatedDateText);
+      bidderContainer.appendChild(bidderCreatedDate);
+
+      const bidderSubContainer = document.createElement('div');
+      bidderSubContainer.classList.add('row');
+
+      const bidderNameP = document.createElement('p');
+      const bidderNameText = itemData.bids[i].bidderName;
+      bidderNameP.append(bidderNameText);
+      bidderNameP.classList.add('col-8', 'col-lg-8', 'ms-3', 'ms-lg-4');
+      bidderContainer.append(bidderNameP);
+
+      const bidderAmount = document.createElement('p');
+      bidderAmount.classList.add('col-3', 'col-lg-3', 'text-center');
+      const bidderAmountNumber = itemData.bids[i].amount;
+      bidderAmount.append(bidderAmountNumber);
+      bidderContainer.appendChild(bidderAmount);
+
+      bidderSubContainer.appendChild(bidderNameP);
+      bidderSubContainer.appendChild(bidderAmount);
+      bidderContainer.appendChild(bidderSubContainer);
+
+      allBidsContainer.appendChild(bidderContainer);
+
+      item.appendChild(allBidsContainer);
+    }
   }
 
   // display sellers name onto page

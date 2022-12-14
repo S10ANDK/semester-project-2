@@ -119,7 +119,7 @@ export function itemTemplate(itemData) {
 }
 
 export function itemTemplateSingle(itemData) {
-  const item = document.createElement('div');
+  const item = document.querySelector('#contentContainerOne');
   item.classList.add('pt-5', 'px-lg-0');
 
   const img = document.createElement('img');

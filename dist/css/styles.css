@@ -11070,7 +11070,8 @@ a {
 .error_message {
   max-width: 600px;
   color: red;
-  margin: 20px auto;
+  padding: 20px;
+  margin: auto;
 }
 
 .loading-indicator {

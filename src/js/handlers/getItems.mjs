@@ -23,14 +23,17 @@ export async function getItemsList() {
 }
 
 export async function getSpecificItem() {
+  const pageContainer = document.querySelector('#pageContainerItemSpecific');
   const listingContainer = document.querySelector('#itemContainer');
+  const loaderContainer = document.querySelector('#loaderContainer');
   try {
     const item = await itemMethods.getListingUnauthorized();
-    listingContainer.innerHTML = '';
+    loaderContainer.classList.add('d-none');
     templates.renderItemTemplate(item, listingContainer);
   } catch {
     console.log('An error has occured');
-    listingContainer.innerHTML = errorMessage('An error has occured');
-    listingContainer.classList.add('text-center');
+    pageContainer.innerHTML = '';
+    pageContainer.innerHTML = errorMessage('An error has occured');
+    pageContainer.classList.add('text-center');
   }
 }

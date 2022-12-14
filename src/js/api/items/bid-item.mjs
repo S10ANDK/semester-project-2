@@ -44,7 +44,7 @@ export async function bidOnItem(itemData) {
     const formContainer = document.querySelector('#biddingForm');
     formContainer.classList.add('fade-in', 'pb-3');
     formContainer.innerHTML = errorMessage(
-      'Listing might have expired, or your bid is too low. Please try again.'
+      'Your bid might be too low. Please try again.'
     );
   }
   console.log(response);

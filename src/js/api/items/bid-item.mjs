@@ -46,6 +46,10 @@ export async function bidOnItem(itemData) {
     formContainer.innerHTML = errorMessage(
       'Your bid might be too low. Please try again.'
     );
+ 
+    setTimeout (function(){
+      location.reload();  
+    }, 3000);
   }
   console.log(response);
   return await response.json();

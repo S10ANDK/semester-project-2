@@ -260,12 +260,14 @@ export function itemTemplateSingle(itemData) {
     listingExpiredMessage.append(listingExpiredMessageText);
     item.appendChild(listingExpiredMessage);
   }
+
   if (localStorage.getItem('name') === null) {
     makeABidButton.classList.add('d-none');
+    // listingExpiredMessage.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
-    listingExpiredMessage.classList.add('fst-italic', 'my-4', 'col-lg-5');
+    listingExpiredMessage.classList.add('my-4', 'col-lg-5');
     const listingExpiredMessageText =
-      'In order to bid on this item you must be logged in';
+      'In order to bid on listed items you must be logged in. Please log in, or register for a new account.';
     listingExpiredMessage.append(listingExpiredMessageText);
     item.appendChild(listingExpiredMessage);
   }

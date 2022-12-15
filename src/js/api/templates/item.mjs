@@ -260,13 +260,22 @@ export function itemTemplateSingle(itemData) {
     listingExpiredMessage.append(listingExpiredMessageText);
     item.appendChild(listingExpiredMessage);
   }
+  if (localStorage.getItem('name') === null) {
+    makeABidButton.classList.add('d-none');
+    const listingExpiredMessage = document.createElement('p');
+    listingExpiredMessage.classList.add('fst-italic', 'my-4', 'col-lg-5');
+    const listingExpiredMessageText =
+      'In order to bid on this item you must be logged in';
+    listingExpiredMessage.append(listingExpiredMessageText);
+    item.appendChild(listingExpiredMessage);
+  }
 
   makeABidButtonContainer.appendChild(makeABidButton);
   item.appendChild(makeABidButtonContainer);
 
   // Creating and displaying listing header
-  const itemHeading = document.createElement('h2');
-  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'itemHeader');
+  const itemHeading = document.createElement('h1');
+  itemHeading.classList.add('col', 'd-flex');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   item.appendChild(itemHeading);

@@ -10797,7 +10797,6 @@ a {
 
 .logo {
   max-width: 220px;
-  transform: translateY(-3px);
 }
 
 .plus-icon {
@@ -11057,7 +11056,12 @@ a {
   height: 500px;
 }
 
-.bid-button {
+.tags {
+  font-family: futura PT;
+  font-size: 1.1rem;
+}
+
+.tags .bid-button {
   width: 320px;
 }
 
@@ -11065,6 +11069,10 @@ a {
   color: #e87e51;
   font-size: 1.8rem;
   background-color: #313547;
+}
+
+.bidsAmountSpecific {
+  transform: translateY(-2px);
 }
 
 .banner_image {

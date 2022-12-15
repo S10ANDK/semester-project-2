@@ -119,10 +119,28 @@ export function itemTemplate(itemData) {
 }
 
 export function itemTemplateSingle(itemData) {
-  // const item = document.querySelector('#contentContainerOne');
   const item = document.createElement('div');
-  item.classList.add('row', 'px-lg-0');
+  item.classList.add('px-lg-0', 'row');
 
+  const contentOneContainer = document.createElement('div');
+  contentOneContainer.classList.add('col', 'col-sm');
+  const contentOne = document.createElement('div');
+  contentOne.classList.add('row');
+  contentOneContainer.appendChild(contentOne);
+
+  const contentTwoContainer = document.createElement('div');
+  contentTwoContainer.classList.add('col', 'col-sm');
+  const contentTwo = document.createElement('div');
+  contentTwo.classList.add('row');
+  contentTwoContainer.appendChild(contentTwo);
+
+  const contentThreeContainer = document.createElement('div');
+  contentThreeContainer.classList.add('col', 'col-sm');
+  const contentThree = document.createElement('div');
+  contentThree.classList.add('row');
+  contentThreeContainer.appendChild(contentThree);
+
+  // Displaying listings images with a gallery
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
 
@@ -140,8 +158,7 @@ export function itemTemplateSingle(itemData) {
       'carousel',
       'slide',
       'rounded-4',
-      'col',
-      'col-lg-6',
+      'col-12',
       'mx-auto',
       'mx-lg-0'
     );
@@ -207,12 +224,12 @@ export function itemTemplateSingle(itemData) {
     imageGallery.appendChild(navPrev);
     imageGallery.appendChild(navNext);
 
-    item.append(imageGallery);
+    contentOne.append(imageGallery);
   }
 
   //tags displayed onto page
   const tagsContainer = document.createElement('div');
-  tagsContainer.classList.add('py-3');
+  tagsContainer.classList.add('col-12', 'py-3', 'd-inline', 'tags');
 
   if (itemData.tags.length === 0) {
     const noTags = document.createElement('p');
@@ -221,21 +238,21 @@ export function itemTemplateSingle(itemData) {
     tagsContainer.appendChild(noTags);
     item.appendChild(tagsContainer);
   } else {
-    for (let i = 0; i < itemData.tags.length; i++) {
+    const firstTag = document.createElement('p');
+    firstTag.classList.add('d-inline');
+    const firstTagText = itemData.tags[0];
+    firstTag.append(firstTagText);
+    tagsContainer.appendChild(firstTag);
+
+    for (let i = 1; i < itemData.tags.length; i++) {
       const tag = document.createElement('p');
-      const tagText = itemData.tags[i];
+      tag.classList.add('d-inline');
+      const tagText = `, ${itemData.tags[i]}`;
       tag.append(tagText);
       tagsContainer.appendChild(tag);
-      item.appendChild(tagsContainer);
     }
+    contentOne.appendChild(tagsContainer);
   }
-
-  // display sellers name onto page
-  const sellerName = document.createElement('p');
-  const sellerNameText = itemData.seller.name;
-  sellerName.append(sellerNameText);
-
-  item.appendChild(sellerName);
 
   // Displays link to update listing page
   const nameLocalStorage = localStorage.getItem('name');
@@ -244,26 +261,41 @@ export function itemTemplateSingle(itemData) {
   if (itemData.seller.name === nameLocalStorage) {
     const idItem = itemData.id;
     const updateButton = document.createElement('a');
+    updateButton.classList('col-12');
     updateButton.href = '/html/list-item/update/?id=' + idItem;
     updateButton.innerText = 'Update listing';
-    item.appendChild(updateButton);
+    contentOne.appendChild(updateButton);
   }
+
+  item.appendChild(contentOneContainer);
+
+  // Display seller's name onto page
+  const sellerName = document.createElement('p');
+  sellerName.setAttribute('id', 'sellerName');
+  sellerName.classList.add('col-12', 'col-lg-6');
+  const sellerNameText = `Listed by ${itemData.seller.name}`;
+  sellerName.append(sellerNameText);
+
+  contentTwo.appendChild(sellerName);
 
   // Creating and displaying listing header
   const itemHeading = document.createElement('h1');
-  itemHeading.classList.add('col', 'd-flex');
+  itemHeading.classList.add('col-12', 'col-lg-6');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
-  item.appendChild(itemHeading);
+  contentTwo.appendChild(itemHeading);
 
   // Displaying relevant dates
+  const datesContainer = document.createElement('div');
+  datesContainer.classList.add('col-12', 'col-lg-6');
+
   const createdDateP = document.createElement('p');
   createdDateP.classList.add('createdDate', 'col');
   const createdDate = document.createTextNode(
     new Date(itemData.created).toGMTString()
   );
   createdDateP.appendChild(createdDate);
-  item.appendChild(createdDateP);
+  datesContainer.appendChild(createdDateP);
 
   const updatedDateP = document.createElement('p');
   updatedDateP.classList.add('updatedDate', 'col');
@@ -271,7 +303,7 @@ export function itemTemplateSingle(itemData) {
     new Date(itemData.updated).toGMTString()
   );
   updatedDateP.appendChild(updatedDate);
-  item.appendChild(updatedDateP);
+  datesContainer.appendChild(updatedDateP);
 
   const endsAtDateP = document.createElement('p');
   endsAtDateP.classList.add('endsAtDate', 'col');
@@ -279,13 +311,20 @@ export function itemTemplateSingle(itemData) {
     new Date(itemData.endsAt).toGMTString()
   );
   endsAtDateP.appendChild(endsAtDate);
-  item.appendChild(endsAtDateP);
+  datesContainer.appendChild(endsAtDateP);
+
+  contentTwo.appendChild(datesContainer);
 
   // Displaying current highest bid onto page
   const bidsArrayReversed = itemData.bids.reverse();
 
   const highestBidContainer = document.createElement('div');
-  highestBidContainer.classList.add('col-6', 'row', 'align-items-center');
+  highestBidContainer.classList.add(
+    'col-12',
+    'col-lg-6',
+    'row',
+    'align-items-center'
+  );
   const highestBidTitle = document.createElement('p');
   highestBidTitle.classList.add('col-4');
   const highestBidTitleText = 'Highest bid:';
@@ -304,11 +343,11 @@ export function itemTemplateSingle(itemData) {
   if (itemData.bids.length === 0) {
     const highestBidAmountNumber = '0';
     highestBidAmount.append(highestBidAmountNumber);
-    item.appendChild(highestBidContainer);
+    contentTwo.appendChild(highestBidContainer);
   } else {
     const highestBidAmountNumber = bidsArrayReversed[0].amount;
     highestBidAmount.append(highestBidAmountNumber);
-    item.appendChild(highestBidContainer);
+    contentTwo.appendChild(highestBidContainer);
   }
 
   // Creating and displaying the "make a bid" button onto page
@@ -317,8 +356,8 @@ export function itemTemplateSingle(itemData) {
     makeABidButtonContainer.classList.add('d-none');
   } else {
     makeABidButtonContainer.classList.add(
-      'col',
-      'col-lg-5',
+      'col-12',
+      'col-lg-6',
       'text-center',
       'py-4'
     );
@@ -364,7 +403,7 @@ export function itemTemplateSingle(itemData) {
     listingExpiredMessage.classList.add('fst-italic', 'my-4', 'ms-4');
     const listingExpiredMessageText = 'Listing has expired...';
     listingExpiredMessage.append(listingExpiredMessageText);
-    item.appendChild(listingExpiredMessage);
+    contentTwo.appendChild(listingExpiredMessage);
   }
 
   if (localStorage.getItem('name') === null) {
@@ -374,51 +413,15 @@ export function itemTemplateSingle(itemData) {
     const listingExpiredMessageText =
       'In order to bid on listed items you must be logged in. Please log in, or register for a new account.';
     listingExpiredMessage.append(listingExpiredMessageText);
-    item.appendChild(listingExpiredMessage);
+    contentTwo.appendChild(listingExpiredMessage);
   }
 
   makeABidButtonContainer.appendChild(makeABidButton);
-  item.appendChild(makeABidButtonContainer);
-
-  // Adds input and button for making bids on listing if user is logged in
-  // const biddingFormContainer = document.createElement('div');
-
-  // if (localStorage.getItem('name') === null) {
-  //   const loginMessage = document.createElement('p');
-  //   const loginMessageText =
-  //     'Please log in to our website to bid on this listing.';
-  //   loginMessage.append(loginMessageText);
-  //   biddingFormContainer.appendChild(loginMessage);
-  //   item.appendChild(biddingFormContainer);
-  // } else {
-  //   const biddingForm = document.createElement('form');
-  //   biddingForm.setAttribute('id', 'biddingForm');
-  //   biddingForm.classList.add('form');
-
-  // const amountLabel = document.createElement('label');
-  // amountLabel.setAttribute('for', 'amount');
-  // amountLabel.innerText = ''
-
-  // const inputAmount = document.createElement('input');
-  // inputAmount.setAttribute('type', 'number');
-  // inputAmount.setAttribute('name', 'amount');
-  // inputAmount.setAttribute('id', 'amount');
-  // inputAmount.setAttribute('required', '');
-
-  // const bidButton = document.createElement('button');
-  // bidButton.innerText = 'Submit bid';
-  // bidButton.setAttribute('type', 'button');
-  // bidButton.setAttribute('id', 'bidButton');
-  // bidButton.classList.add('btn', 'btn-success', 'btn-outline-success');
-
-  // biddingForm.appendChild(inputAmount);
-  // biddingForm.appendChild(bidButton);
-  // biddingFormContainer.appendChild(biddingForm);
-  // item.appendChild(biddingFormContainer);
-  // }
+  contentTwo.appendChild(makeABidButtonContainer);
 
   // display listing description onto page
   const descriptionContainer = document.createElement('div');
+  descriptionContainer.classList.add('col-12', 'col-lg-6');
   const descriptionTitle = document.createElement('p');
   descriptionTitle.innerText = 'Description:';
   descriptionContainer.appendChild(descriptionTitle);
@@ -426,47 +429,57 @@ export function itemTemplateSingle(itemData) {
   const descriptionText = itemData.description;
   description.append(descriptionText);
   descriptionContainer.appendChild(description);
-  item.appendChild(descriptionContainer);
+  contentTwo.appendChild(descriptionContainer);
 
-  // display amount of bids for listing onto page
-  const bidAmount = document.createElement('p');
-  bidAmount.classList.add('col', 'bidsAmount');
+  item.appendChild(contentTwoContainer);
 
-  if (itemData._count.bids === 1) {
-    const currentBidText = document.createTextNode(
-      `${itemData._count.bids} bid`
-    );
-    bidAmount.appendChild(currentBidText);
-    item.appendChild(bidAmount);
-  } else {
-    const currentBidText = document.createTextNode(
-      `${itemData._count.bids} bids`
-    );
-    bidAmount.appendChild(currentBidText);
-    item.appendChild(bidAmount);
-  }
-
-  // display bids title or message onto page
+  // display bids header and number of bids
   if (itemData.bids.length === 0) {
     const noBidsMessage = document.createElement('p');
-    const noBidsMessageText =
-      'No current bids. Be the first to bid on this item!';
+    noBidsMessage.classList.add('fst-italic');
+    const noBidsMessageText = 'No current bids ...';
     noBidsMessage.append(noBidsMessageText);
 
-    item.appendChild(noBidsMessage);
+    contentTwo.appendChild(noBidsMessage);
   } else {
+    const biddersTitleContainer = document.createElement('div');
+    biddersTitleContainer.classList.add('col-12', 'col-lg-6', 'row');
     const biddersHeader = document.createElement('h2');
-    biddersHeader.classList.add('py-3');
+    biddersHeader.classList.add('py-3', 'col');
     const biddersHeaderText = 'Bids made on listing:';
     biddersHeader.append(biddersHeaderText);
+    biddersTitleContainer.appendChild(biddersHeader);
 
-    item.appendChild(biddersHeader);
+    const bidAmount = document.createElement('p');
+    bidAmount.classList.add(
+      'col',
+      'bidsAmount',
+      'bidsAmountSpecific',
+      'py-3',
+      'mb-0',
+      'text-end'
+    );
+    if (itemData._count.bids === 1) {
+      const currentBidText = document.createTextNode(
+        `${itemData._count.bids} bid`
+      );
+      bidAmount.appendChild(currentBidText);
+      contentThree.appendChild(bidAmount);
+    } else {
+      const currentBidText = document.createTextNode(
+        `${itemData._count.bids} bids`
+      );
+      bidAmount.appendChild(currentBidText);
+      biddersTitleContainer.appendChild(bidAmount);
+    }
+
+    contentThree.appendChild(biddersTitleContainer);
 
     // Display bids made on listing onto page
     if (itemData.bids) {
       for (let i = 0; i < bidsArrayReversed.length; i++) {
         const allBidsContainer = document.createElement('div');
-        allBidsContainer.classList.add('row');
+        // allBidsContainer.classList.add('row');
 
         const bidderContainer = document.createElement('div');
         bidderContainer.classList.add(
@@ -493,7 +506,7 @@ export function itemTemplateSingle(itemData) {
         bidderContainer.appendChild(bidderCreatedDate);
 
         const bidderSubContainer = document.createElement('div');
-        bidderSubContainer.classList.add('row');
+        // bidderSubContainer.classList.add('row');
 
         const bidderNameP = document.createElement('p');
         const bidderNameText = itemData.bids[i].bidderName;
@@ -513,8 +526,10 @@ export function itemTemplateSingle(itemData) {
 
         allBidsContainer.appendChild(bidderContainer);
 
-        item.appendChild(allBidsContainer);
+        contentThree.appendChild(allBidsContainer);
       }
+
+      item.appendChild(contentThreeContainer);
     }
   }
 

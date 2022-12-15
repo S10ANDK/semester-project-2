@@ -40,7 +40,6 @@ a {
 
 .logo {
   max-width: 220px;
-  transform: translateY(-3px);
 }
 
 .plus-icon {
@@ -306,15 +305,23 @@ a {
   height: 500px;
 }
 
-.bid-button {
+.tags {
+  font-family: futura PT;
+  font-size: 1.1rem;
+}
+
+.tags .bid-button {
   width: 320px;
 }
 
 .highestBidAmount {
   color: $orange;
   font-size: 1.8rem;
-  // transform: translateY(-6px);
   background-color: $blue;
+}
+
+.bidsAmountSpecific {
+  transform: translateY(-2px);
 }
 
 .banner_image {

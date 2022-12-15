@@ -6,7 +6,7 @@ export function profileTemplate(profileData) {
   greetingContainer.classList.add('d-flex', 'justify-content-between');
   const name = document.createElement('h1');
   name.setAttribute('id', 'profileHeader');
-  name.classList.add('py-4', 'mb-5', 'ms-4', 'text-start', 'col');
+  name.classList.add('mt-3', 'mb-5', 'ms-4', 'text-start', 'col-8');
   const nameText = document.createTextNode(profileData.name);
   const greetingText = `Welcome, ${nameText.nodeValue}!`;
   name.append(greetingText);
@@ -17,7 +17,7 @@ export function profileTemplate(profileData) {
   const profileInfoContainer = document.createElement('div');
   profileInfoContainer.classList.add(
     'py-5',
-    'mw-600',
+    'mw-800',
     'mx-auto',
     'border',
     'border-2',

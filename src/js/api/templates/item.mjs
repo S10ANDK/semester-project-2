@@ -121,7 +121,7 @@ export function itemTemplate(itemData) {
 export function itemTemplateSingle(itemData) {
   // const item = document.querySelector('#contentContainerOne');
   const item = document.createElement('div');
-  item.classList.add('px-lg-0');
+  item.classList.add('row', 'px-lg-0');
 
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
@@ -141,7 +141,7 @@ export function itemTemplateSingle(itemData) {
       'slide',
       'rounded-4',
       'col',
-      'col-lg-5',
+      'col-lg-6',
       'mx-auto',
       'mx-lg-0'
     );
@@ -210,14 +210,120 @@ export function itemTemplateSingle(itemData) {
     item.append(imageGallery);
   }
 
+  //tags displayed onto page
+  const tagsContainer = document.createElement('div');
+  tagsContainer.classList.add('py-3');
+
+  if (itemData.tags.length === 0) {
+    const noTags = document.createElement('p');
+    noTags.innerText = 'No tags..';
+    noTags.classList.add('fst-italic');
+    tagsContainer.appendChild(noTags);
+    item.appendChild(tagsContainer);
+  } else {
+    for (let i = 0; i < itemData.tags.length; i++) {
+      const tag = document.createElement('p');
+      const tagText = itemData.tags[i];
+      tag.append(tagText);
+      tagsContainer.appendChild(tag);
+      item.appendChild(tagsContainer);
+    }
+  }
+
+  // display sellers name onto page
+  const sellerName = document.createElement('p');
+  const sellerNameText = itemData.seller.name;
+  sellerName.append(sellerNameText);
+
+  item.appendChild(sellerName);
+
+  // Displays link to update listing page
+  const nameLocalStorage = localStorage.getItem('name');
+  console.log(nameLocalStorage);
+  console.log(itemData.seller.name);
+  if (itemData.seller.name === nameLocalStorage) {
+    const idItem = itemData.id;
+    const updateButton = document.createElement('a');
+    updateButton.href = '/html/list-item/update/?id=' + idItem;
+    updateButton.innerText = 'Update listing';
+    item.appendChild(updateButton);
+  }
+
+  // Creating and displaying listing header
+  const itemHeading = document.createElement('h1');
+  itemHeading.classList.add('col', 'd-flex');
+  const itemHeadingText = document.createTextNode(itemData.title);
+  itemHeading.appendChild(itemHeadingText);
+  item.appendChild(itemHeading);
+
+  // Displaying relevant dates
+  const createdDateP = document.createElement('p');
+  createdDateP.classList.add('createdDate', 'col');
+  const createdDate = document.createTextNode(
+    new Date(itemData.created).toGMTString()
+  );
+  createdDateP.appendChild(createdDate);
+  item.appendChild(createdDateP);
+
+  const updatedDateP = document.createElement('p');
+  updatedDateP.classList.add('updatedDate', 'col');
+  const updatedDate = document.createTextNode(
+    new Date(itemData.updated).toGMTString()
+  );
+  updatedDateP.appendChild(updatedDate);
+  item.appendChild(updatedDateP);
+
+  const endsAtDateP = document.createElement('p');
+  endsAtDateP.classList.add('endsAtDate', 'col');
+  const endsAtDate = document.createTextNode(
+    new Date(itemData.endsAt).toGMTString()
+  );
+  endsAtDateP.appendChild(endsAtDate);
+  item.appendChild(endsAtDateP);
+
+  // Displaying current highest bid onto page
+  const bidsArrayReversed = itemData.bids.reverse();
+
+  const highestBidContainer = document.createElement('div');
+  highestBidContainer.classList.add('col-6', 'row', 'align-items-center');
+  const highestBidTitle = document.createElement('p');
+  highestBidTitle.classList.add('col-4');
+  const highestBidTitleText = 'Highest bid:';
+  highestBidTitle.append(highestBidTitleText);
+  const highestBidAmount = document.createElement('p');
+  highestBidAmount.classList.add(
+    'col-8',
+    'highestBidAmount',
+    'text-center',
+    'rounded-3'
+  );
+
+  highestBidContainer.appendChild(highestBidTitle);
+  highestBidContainer.appendChild(highestBidAmount);
+
+  if (itemData.bids.length === 0) {
+    const highestBidAmountNumber = '0';
+    highestBidAmount.append(highestBidAmountNumber);
+    item.appendChild(highestBidContainer);
+  } else {
+    const highestBidAmountNumber = bidsArrayReversed[0].amount;
+    highestBidAmount.append(highestBidAmountNumber);
+    item.appendChild(highestBidContainer);
+  }
+
   // Creating and displaying the "make a bid" button onto page
   const makeABidButtonContainer = document.createElement('div');
-  makeABidButtonContainer.classList.add(
-    'col',
-    'col-lg-5',
-    'text-center',
-    'py-4'
-  );
+  if (itemData.seller.name === nameLocalStorage) {
+    makeABidButtonContainer.classList.add('d-none');
+  } else {
+    makeABidButtonContainer.classList.add(
+      'col',
+      'col-lg-5',
+      'text-center',
+      'py-4'
+    );
+  }
+
   const makeABidButton = document.createElement('button');
   makeABidButton.classList.add(
     'btn',
@@ -253,7 +359,7 @@ export function itemTemplateSingle(itemData) {
   const currentDateParsed = parseInt(currentDate);
 
   if (listingDateParsed <= currentDateParsed) {
-    makeABidButton.classList.add('d-none');
+    makeABidButtonContainer.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
     listingExpiredMessage.classList.add('fst-italic', 'my-4', 'ms-4');
     const listingExpiredMessageText = 'Listing has expired...';
@@ -262,8 +368,7 @@ export function itemTemplateSingle(itemData) {
   }
 
   if (localStorage.getItem('name') === null) {
-    makeABidButton.classList.add('d-none');
-    // listingExpiredMessage.classList.add('d-none');
+    makeABidButtonContainer.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
     listingExpiredMessage.classList.add('my-4', 'col-lg-5');
     const listingExpiredMessageText =
@@ -274,75 +379,6 @@ export function itemTemplateSingle(itemData) {
 
   makeABidButtonContainer.appendChild(makeABidButton);
   item.appendChild(makeABidButtonContainer);
-
-  // Creating and displaying listing header
-  const itemHeading = document.createElement('h1');
-  itemHeading.classList.add('col', 'd-flex');
-  const itemHeadingText = document.createTextNode(itemData.title);
-  itemHeading.appendChild(itemHeadingText);
-  item.appendChild(itemHeading);
-
-  // Displaying relevant dates
-  const createdDateP = document.createElement('p');
-  createdDateP.classList.add('createdDate', 'col');
-  const createdDate = document.createTextNode(
-    new Date(itemData.created).toGMTString()
-  );
-  createdDateP.appendChild(createdDate);
-  item.appendChild(createdDateP);
-
-  const updatedDateP = document.createElement('p');
-  updatedDateP.classList.add('updatedDate', 'col');
-  const updatedDate = document.createTextNode(
-    new Date(itemData.updated).toGMTString()
-  );
-  updatedDateP.appendChild(updatedDate);
-  item.appendChild(updatedDateP);
-
-  const endsAtDateP = document.createElement('p');
-  endsAtDateP.classList.add('endsAtDate', 'col');
-  const endsAtDate = document.createTextNode(
-    new Date(itemData.endsAt).toGMTString()
-  );
-  endsAtDateP.appendChild(endsAtDate);
-  item.appendChild(endsAtDateP);
-
-  // tags displayed onto page
-  for (let i = 0; i < itemData.tags.length; i++) {
-    const tagsContainer = document.createElement('div');
-
-    if (itemData.tags[0] === '') {
-      const noTags = document.createElement('p');
-      noTags.innerText = 'No tags..';
-      noTags.classList.add('fst-italic');
-      tagsContainer.appendChild(noTags);
-      item.appendChild(tagsContainer);
-    } else {
-      const tag = document.createElement('p');
-      const tagText = itemData.tags[i];
-      tag.append(tagText);
-      tagsContainer.appendChild(tag);
-      item.appendChild(tagsContainer);
-    }
-  }
-
-  // display amount of bids for listing onto page
-  const bidAmount = document.createElement('p');
-  bidAmount.classList.add('col', 'bidsAmount');
-
-  if (itemData._count.bids === 1) {
-    const currentBidText = document.createTextNode(
-      `${itemData._count.bids} bid`
-    );
-    bidAmount.appendChild(currentBidText);
-    item.appendChild(bidAmount);
-  } else {
-    const currentBidText = document.createTextNode(
-      `${itemData._count.bids} bids`
-    );
-    bidAmount.appendChild(currentBidText);
-    item.appendChild(bidAmount);
-  }
 
   // Adds input and button for making bids on listing if user is logged in
   // const biddingFormContainer = document.createElement('div');
@@ -392,12 +428,25 @@ export function itemTemplateSingle(itemData) {
   descriptionContainer.appendChild(description);
   item.appendChild(descriptionContainer);
 
-  // console.log(itemData.id);
-  // console.log(itemData.seller);
+  // display amount of bids for listing onto page
+  const bidAmount = document.createElement('p');
+  bidAmount.classList.add('col', 'bidsAmount');
 
-  // display bidders onto page
+  if (itemData._count.bids === 1) {
+    const currentBidText = document.createTextNode(
+      `${itemData._count.bids} bid`
+    );
+    bidAmount.appendChild(currentBidText);
+    item.appendChild(bidAmount);
+  } else {
+    const currentBidText = document.createTextNode(
+      `${itemData._count.bids} bids`
+    );
+    bidAmount.appendChild(currentBidText);
+    item.appendChild(bidAmount);
+  }
 
-  // console.log(itemData.bids.length);
+  // display bids title or message onto page
   if (itemData.bids.length === 0) {
     const noBidsMessage = document.createElement('p');
     const noBidsMessageText =
@@ -413,67 +462,60 @@ export function itemTemplateSingle(itemData) {
 
     item.appendChild(biddersHeader);
 
-    for (let i = 0; i < itemData.bids.length; i++) {
-      const allBidsContainer = document.createElement('div');
-      allBidsContainer.classList.add('row');
+    // Display bids made on listing onto page
+    if (itemData.bids) {
+      for (let i = 0; i < bidsArrayReversed.length; i++) {
+        const allBidsContainer = document.createElement('div');
+        allBidsContainer.classList.add('row');
 
-      const bidderContainer = document.createElement('div');
-      bidderContainer.classList.add(
-        'py-3',
-        'col',
-        'col-md-6',
-        'border',
-        'border-primary',
-        'rounded-2',
-        'my-3'
-      );
+        const bidderContainer = document.createElement('div');
+        bidderContainer.classList.add(
+          'py-3',
+          'col',
+          'col-md-6',
+          'border',
+          'border-primary',
+          'rounded-2',
+          'my-3'
+        );
 
-      const bidderCreatedDate = document.createElement('p');
-      bidderCreatedDate.classList.add('createdDate', 'px-3', 'pb-2', 'ps-lg-4');
-      const bidderCreatedDateText = document.createTextNode(
-        new Date(itemData.bids[i].created).toGMTString()
-      );
-      bidderCreatedDate.append(bidderCreatedDateText);
-      bidderContainer.appendChild(bidderCreatedDate);
+        const bidderCreatedDate = document.createElement('p');
+        bidderCreatedDate.classList.add(
+          'createdDate',
+          'px-3',
+          'pb-2',
+          'ps-lg-4'
+        );
+        const bidderCreatedDateText = document.createTextNode(
+          new Date(itemData.bids[i].created).toGMTString()
+        );
+        bidderCreatedDate.append(bidderCreatedDateText);
+        bidderContainer.appendChild(bidderCreatedDate);
 
-      const bidderSubContainer = document.createElement('div');
-      bidderSubContainer.classList.add('row');
+        const bidderSubContainer = document.createElement('div');
+        bidderSubContainer.classList.add('row');
 
-      const bidderNameP = document.createElement('p');
-      const bidderNameText = itemData.bids[i].bidderName;
-      bidderNameP.append(bidderNameText);
-      bidderNameP.classList.add('col-8', 'col-lg-8', 'ms-3', 'ms-lg-4');
-      bidderContainer.append(bidderNameP);
+        const bidderNameP = document.createElement('p');
+        const bidderNameText = itemData.bids[i].bidderName;
+        bidderNameP.append(bidderNameText);
+        bidderNameP.classList.add('col-8', 'col-lg-8', 'ms-3', 'ms-lg-4');
+        bidderContainer.append(bidderNameP);
 
-      const bidderAmount = document.createElement('p');
-      bidderAmount.classList.add('col-3', 'col-lg-3', 'text-center');
-      const bidderAmountNumber = itemData.bids[i].amount;
-      bidderAmount.append(bidderAmountNumber);
-      bidderContainer.appendChild(bidderAmount);
+        const bidderAmount = document.createElement('p');
+        bidderAmount.classList.add('col-3', 'col-lg-3', 'text-center');
+        const bidderAmountNumber = itemData.bids[i].amount;
+        bidderAmount.append(bidderAmountNumber);
+        bidderContainer.appendChild(bidderAmount);
 
-      bidderSubContainer.appendChild(bidderNameP);
-      bidderSubContainer.appendChild(bidderAmount);
-      bidderContainer.appendChild(bidderSubContainer);
+        bidderSubContainer.appendChild(bidderNameP);
+        bidderSubContainer.appendChild(bidderAmount);
+        bidderContainer.appendChild(bidderSubContainer);
 
-      allBidsContainer.appendChild(bidderContainer);
+        allBidsContainer.appendChild(bidderContainer);
 
-      item.appendChild(allBidsContainer);
+        item.appendChild(allBidsContainer);
+      }
     }
-  }
-
-  // display sellers name onto page
-  const sellerName = document.createElement('p');
-  const sellerNameText = itemData.seller.name;
-  sellerName.append(sellerNameText);
-  item.appendChild(sellerName);
-
-  const nameLocalStorage = localStorage.getItem('name');
-  if (itemData.seller.name === nameLocalStorage) {
-    const idItem = itemData.id;
-    const updateButton = document.createElement('a');
-    updateButton.href = '/html/list-item/update/?id=' + idItem;
-    updateButton.innerText = 'Update listing';
-    item.appendChild(updateButton);
   }
 
   return item;

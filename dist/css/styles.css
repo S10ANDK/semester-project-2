@@ -11042,23 +11042,29 @@ a {
   font-style: Futura PT;
   font-size: 2rem;
   color: #e87e51;
-  background-color: #000;
+  background-color: #313547;
 }
 
 #imageGallery {
-  height: 450px;
-  max-width: 450px;
+  height: 500px;
+  max-width: 500px;
   background-color: #e0e0e0;
 }
 
 .galleryImages {
   object-fit: contain;
-  min-width: 450px;
-  height: 450px;
+  max-width: 500px;
+  height: 500px;
 }
 
 .bid-button {
   width: 320px;
+}
+
+.highestBidAmount {
+  color: #e87e51;
+  font-size: 1.8rem;
+  background-color: #313547;
 }
 
 .banner_image {

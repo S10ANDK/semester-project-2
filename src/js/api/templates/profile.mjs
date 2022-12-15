@@ -6,7 +6,7 @@ export function profileTemplate(profileData) {
   greetingContainer.classList.add('d-flex', 'justify-content-between');
   const name = document.createElement('h1');
   name.setAttribute('id', 'profileHeader');
-  name.classList.add('mt-3', 'mb-5', 'ms-4', 'text-start', 'col-8');
+  name.classList.add('mt-3', 'mb-4', 'mb-lg-5', 'ms-4', 'text-start', 'col-7');
   const nameText = document.createTextNode(profileData.name);
   const greetingText = `Welcome, ${nameText.nodeValue}!`;
   name.append(greetingText);
@@ -88,7 +88,7 @@ export function profileTemplate(profileData) {
   profileContentContainer.appendChild(profileInfoContainer);
 
   const credits = document.createElement('p');
-  credits.classList.add('creditsDisplayed', 'p-3', 'mx-auto', 'rounded-3');
+  credits.classList.add('creditsDisplayed', 'p-2', 'mx-auto', 'rounded-3');
   const creditsNumber = document.createTextNode(profileData.credits);
   credits.append(creditsNumber);
   profileInfoContainer.appendChild(credits);

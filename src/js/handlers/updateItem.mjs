@@ -41,7 +41,6 @@ export async function setUpdateItemListener() {
           tags,
         };
         item.id = id;
-        console.log(item);
         updateListing(item);
       } else {
         const item = {
@@ -50,7 +49,6 @@ export async function setUpdateItemListener() {
           tags,
           media,
         };
-        console.log(item);
         updateListing(item);
       }
     });

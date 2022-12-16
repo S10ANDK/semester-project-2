@@ -17,8 +17,6 @@ export async function setCreateItemListener() {
       const media = mediaObject;
       const endsAt = date;
 
-      console.log(mediaObject);
-
       if (mediaObject[0] === '') {
         const itemData = {
           title,
@@ -26,7 +24,6 @@ export async function setCreateItemListener() {
           tags,
           endsAt,
         };
-        console.log(itemData);
         createItem(itemData);
       } else {
         const itemData = {
@@ -36,7 +33,6 @@ export async function setCreateItemListener() {
           media,
           endsAt,
         };
-        console.log(itemData);
         createItem(itemData);
       }
     });

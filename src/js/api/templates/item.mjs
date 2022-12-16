@@ -170,8 +170,6 @@ export function itemTemplateSingle(itemData) {
   contentThree.classList.add('row', 'g-0');
   contentThreeContainer.appendChild(contentThree);
 
-  // Display listing header as title
-
   // Displaying listings images with a gallery
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');

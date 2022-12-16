@@ -11014,6 +11014,10 @@ a {
   border: #313547;
 }
 
+#profileHeader {
+  font-size: 1.5rem;
+}
+
 #logOutButton {
   width: 90px;
   height: 35px;

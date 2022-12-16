@@ -50,7 +50,6 @@ async function filterAscending() {
     filterOldestButton.classList.remove('btn-info', 'btn-outline-info');
     filterNewestButton.classList.add('btn-info', 'btn-outline-info');
     filterNewestButton.classList.remove('btn-success', 'btn-outline-success');
-    // filterOldestButton.addEventListener('click', filterAscending);
   } catch {
     console.log('An error has occured');
   }

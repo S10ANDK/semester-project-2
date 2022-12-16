@@ -19,8 +19,6 @@ export async function bidOnItem(itemData) {
     method,
     body: JSON.stringify(itemData)
   });
-  console.log(bidOnItemUrl);
-  console.log(response);
 
   if (response.ok) {
     const formContainer = document.querySelector('#biddingForm');
@@ -51,6 +49,6 @@ export async function bidOnItem(itemData) {
       location.reload();  
     }, 3000);
   }
-  console.log(response);
+
   return await response.json();
 }

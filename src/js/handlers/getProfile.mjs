@@ -15,7 +15,6 @@ export async function getProfile() {
     const profile = await profileMethods.getProfile(getProfileURL);
     profileContainer.innerHTML = '';
     templates.renderProfile(profile, profileContainer);
-    topButton.style.display = 'block';
   } catch {
     console.log('An error has occured');
     profileContainer.innerHTML = errorMessage('An error has occured');

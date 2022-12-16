@@ -150,7 +150,7 @@ export function itemTemplateSingle(itemData) {
     'col-lg-6',
     'mt-3',
     'ms-lg-5',
-    'ps-lg-5',
+    'ps-lg-4',
     'mx-auto',
     'contentContainer'
   );
@@ -318,7 +318,7 @@ export function itemTemplateSingle(itemData) {
 
   // Creating and displaying listing header
   const itemHeading = document.createElement('h1');
-  itemHeading.classList.add('col-12', 'col-lg-12', 'mt-2');
+  itemHeading.classList.add('col-12', 'col-lg-12', 'mt-2', 'me-lg-3');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   contentTwo.appendChild(itemHeading);
@@ -391,7 +391,7 @@ export function itemTemplateSingle(itemData) {
     'px-0',
     'pb-3'
   );
-  const highestBidTitle = document.createElement('p');
+  const highestBidTitle = document.createElement('h2');
   highestBidTitle.classList.add('col-4');
   const highestBidTitleText = 'Highest bid:';
   highestBidTitle.append(highestBidTitleText);
@@ -493,7 +493,7 @@ export function itemTemplateSingle(itemData) {
   descriptionTitle.innerText = 'Description:';
   descriptionContainer.appendChild(descriptionTitle);
   const description = document.createElement('p');
-  description.classList.add('pt-2');
+  description.classList.add('pt-2', 'me-lg-3');
   if (itemData.description) {
     const descriptionText = itemData.description;
     description.append(descriptionText);
@@ -521,7 +521,7 @@ export function itemTemplateSingle(itemData) {
     biddersTitleContainer.classList.add('col-12', 'col-lg-5', 'row');
     const biddersHeader = document.createElement('h2');
     biddersHeader.classList.add('py-3', 'col');
-    const biddersHeaderText = 'Bids made on listing:';
+    const biddersHeaderText = 'Bids made:';
     biddersHeader.append(biddersHeaderText);
     biddersTitleContainer.appendChild(biddersHeader);
 

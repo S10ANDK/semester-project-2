@@ -5,7 +5,6 @@ import { errorMessage } from '../components/displayError.mjs';
 
 const action = '/profiles/';
 
-const topButton = document.querySelector('#topButton');
 const profileContainer = document.querySelector('#profileContainer');
 
 export async function getProfile() {

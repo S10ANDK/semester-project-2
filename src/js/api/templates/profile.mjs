@@ -94,13 +94,6 @@ export function profileTemplate(profileData) {
   profileInfoContainer.appendChild(credits);
   profileContentContainer.appendChild(profileInfoContainer);
 
-  // const wins = document.createElement('p');
-  // const winsNumber = document.createTextNode(profileData.wins.length);
-  // wins.append(winsNumber);
-  // profileContentContainer.appendChild(wins);
-  // console.log(profileData.wins.length);
-  // console.log(profileData);
-
   return profileContentContainer;
 }
 

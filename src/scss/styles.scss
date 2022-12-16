@@ -75,10 +75,6 @@ a {
   color: $white !important;
 }
 
-// #userNameLink {
-//   padding-right: 65px;
-// }
-
 .profile_image-small {
   display: block;
   width: 43px;
@@ -258,9 +254,11 @@ a {
 }
 
 #profileInfoContainer {
-  // background-color: $secondary;
-  // color: $black;
   border: #313547;
+}
+
+#profileHeader {
+  font-size: 1.5rem;
 }
 
 #logOutButton {

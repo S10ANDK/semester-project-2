@@ -120,22 +120,52 @@ export function itemTemplate(itemData) {
 
 export function itemTemplateSingle(itemData) {
   const item = document.createElement('div');
-  item.classList.add('px-lg-0', 'row', 'g-0', 'overflow-hidden', 'py-5');
+  item.setAttribute('id', 'specificItemsRendered');
+  item.classList.add(
+    'px-lg-0',
+    'row',
+    'g-0',
+    'overflow-hidden',
+    'py-5',
+    'pt-4',
+    'mx-3',
+    'mx-sm-5'
+  );
 
   const contentOneContainer = document.createElement('div');
-  contentOneContainer.classList.add('col-12', 'col-lg-5', 'm-2');
+  contentOneContainer.classList.add(
+    'col-12',
+    'col-lg-5',
+    'ms-lg-4',
+    'mx-auto',
+    'contentContainer'
+  );
   const contentOne = document.createElement('div');
   contentOne.classList.add('row', 'g-0');
   contentOneContainer.appendChild(contentOne);
 
   const contentTwoContainer = document.createElement('div');
-  contentTwoContainer.classList.add('col-12', 'col-lg-6', 'mt-3', 'ms-lg-5');
+  contentTwoContainer.classList.add(
+    'col-12',
+    'col-lg-6',
+    'mt-3',
+    'ms-lg-5',
+    'ps-lg-5',
+    'mx-auto',
+    'contentContainer'
+  );
   const contentTwo = document.createElement('div');
   contentTwo.classList.add('row', 'g-0');
   contentTwoContainer.appendChild(contentTwo);
 
   const contentThreeContainer = document.createElement('div');
-  contentThreeContainer.classList.add('col-12', 'col-lg-12');
+  contentThreeContainer.classList.add(
+    'col-12',
+    'col-lg-12',
+    'ms-lg-4',
+    'contentContainer',
+    'mx-auto'
+  );
   const contentThree = document.createElement('div');
   contentThree.classList.add('row', 'g-0');
   contentThreeContainer.appendChild(contentThree);
@@ -147,7 +177,7 @@ export function itemTemplateSingle(itemData) {
   if (itemData.media[0] === undefined) {
     img.src = '/assets/image_placeholder.png';
     img.alt = 'image placeholder';
-    img.classList.add('galleryImages');
+    img.classList.add('galleryImages', 'mx-auto');
     contentOne.append(img);
   } else {
     const imageGallery = document.createElement('div');
@@ -176,6 +206,7 @@ export function itemTemplateSingle(itemData) {
     carouselInner.appendChild(imgContainerFirst);
     firstImage.onerror = function imageError() {
       firstImage.src = '/assets/image_placeholder.png';
+      firstImage.classList.add('galleryImages', 'placeholderImg');
     };
 
     for (let i = 1; i < itemData.media.length; i++) {
@@ -187,6 +218,7 @@ export function itemTemplateSingle(itemData) {
       img.alt = `Image from ${itemData.title}`;
       img.onerror = function imageError() {
         img.src = '/assets/image_placeholder.png';
+        img.classList.add('galleryImages', 'placeholderImg');
       };
       img.classList.add('d-block', 'w-100');
       imgContainer.appendChild(img);
@@ -229,12 +261,12 @@ export function itemTemplateSingle(itemData) {
 
   //tags displayed onto page
   const tagsContainer = document.createElement('div');
-  tagsContainer.classList.add('col-12', 'py-3', 'd-inline', 'tags');
+  tagsContainer.classList.add('col-12', 'pt-2', 'py-lg-3', 'd-inline', 'tags');
 
   if (itemData.tags.length === 0) {
     const noTags = document.createElement('p');
     noTags.innerText = 'No tags..';
-    noTags.classList.add('fst-italic');
+    noTags.classList.add('fst-italic', 'my-0', 'my-lg-2');
     tagsContainer.appendChild(noTags);
     contentOne.appendChild(tagsContainer);
   } else {
@@ -260,6 +292,14 @@ export function itemTemplateSingle(itemData) {
   if (itemData.seller.name === nameLocalStorage) {
     const idItem = itemData.id;
     const updateButton = document.createElement('a');
+    updateButton.classList.add(
+      'btn',
+      'btn-info',
+      'btn-outline-info',
+      'mb-5',
+      'mt-2',
+      'updateListingButton'
+    );
     updateButton.href = '/html/list-item/update/?id=' + idItem;
     updateButton.innerText = 'Update listing';
     contentOne.appendChild(updateButton);
@@ -278,7 +318,7 @@ export function itemTemplateSingle(itemData) {
 
   // Creating and displaying listing header
   const itemHeading = document.createElement('h1');
-  itemHeading.classList.add('col-12', 'col-lg-12');
+  itemHeading.classList.add('col-12', 'col-lg-12', 'mt-2');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   contentTwo.appendChild(itemHeading);
@@ -287,28 +327,54 @@ export function itemTemplateSingle(itemData) {
   const datesContainer = document.createElement('div');
   datesContainer.classList.add('col-12', 'col-lg-12');
 
+  const createdDateContainer = document.createElement('div');
+  createdDateContainer.classList.add('d-flex');
+  const createdDateTitle = document.createElement('p');
+  createdDateTitle.classList.add('mb-1');
+  const createdDateTitleText = 'Created:';
+  createdDateTitle.append(createdDateTitleText);
   const createdDateP = document.createElement('p');
-  createdDateP.classList.add('createdDate', 'col');
+  createdDateP.classList.add(
+    'itemSpecificDates',
+    'ps-2',
+    'col',
+    'd-inline',
+    'mb-0'
+  );
   const createdDate = document.createTextNode(
     new Date(itemData.created).toGMTString()
   );
   createdDateP.appendChild(createdDate);
-  datesContainer.appendChild(createdDateP);
+  createdDateContainer.appendChild(createdDateTitle);
+  createdDateContainer.appendChild(createdDateP);
+  datesContainer.appendChild(createdDateContainer);
 
+  const updatedDateContainer = document.createElement('div');
+  updatedDateContainer.classList.add('d-flex');
+  const updatedDateTitle = document.createElement('p');
+  const updatedDateTitleText = 'Updated:';
+  updatedDateTitle.append(updatedDateTitleText);
   const updatedDateP = document.createElement('p');
-  updatedDateP.classList.add('updatedDate', 'col');
+  updatedDateP.classList.add('itemSpecificDates', 'ps-2', 'col', 'mb-5');
   const updatedDate = document.createTextNode(
     new Date(itemData.updated).toGMTString()
   );
   updatedDateP.appendChild(updatedDate);
-  datesContainer.appendChild(updatedDateP);
+  updatedDateContainer.appendChild(updatedDateTitle);
+  updatedDateContainer.appendChild(updatedDateP);
+  datesContainer.appendChild(updatedDateContainer);
 
+  const endsAtDateTitle = document.createElement('p');
+  endsAtDateTitle.classList.add('mb-1');
+  const endsAtDateTitleText = 'Ending at:';
+  endsAtDateTitle.append(endsAtDateTitleText);
   const endsAtDateP = document.createElement('p');
-  endsAtDateP.classList.add('endsAtDate', 'col');
+  endsAtDateP.classList.add('endsAtDate', 'col', 'fw-bold', 'mb-5');
   const endsAtDate = document.createTextNode(
     new Date(itemData.endsAt).toGMTString()
   );
   endsAtDateP.appendChild(endsAtDate);
+  datesContainer.appendChild(endsAtDateTitle);
   datesContainer.appendChild(endsAtDateP);
 
   contentTwo.appendChild(datesContainer);
@@ -321,7 +387,9 @@ export function itemTemplateSingle(itemData) {
     'col-12',
     'col-lg-12',
     'row',
-    'align-items-center'
+    'align-items-center',
+    'px-0',
+    'pb-3'
   );
   const highestBidTitle = document.createElement('p');
   highestBidTitle.classList.add('col-4');
@@ -356,8 +424,9 @@ export function itemTemplateSingle(itemData) {
     makeABidButtonContainer.classList.add(
       'col-12',
       'col-lg-12',
-      'text-center',
-      'py-4'
+      'text-lg-start',
+      'pt-3',
+      'pb-5'
     );
   }
 
@@ -398,7 +467,7 @@ export function itemTemplateSingle(itemData) {
   if (listingDateParsed <= currentDateParsed) {
     makeABidButtonContainer.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
-    listingExpiredMessage.classList.add('fst-italic', 'my-4', 'ms-4');
+    listingExpiredMessage.classList.add('fst-italic', 'mb-4');
     const listingExpiredMessageText = 'Listing has expired...';
     listingExpiredMessage.append(listingExpiredMessageText);
     contentTwo.appendChild(listingExpiredMessage);
@@ -407,7 +476,7 @@ export function itemTemplateSingle(itemData) {
   if (localStorage.getItem('name') === null) {
     makeABidButtonContainer.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
-    listingExpiredMessage.classList.add('my-4', 'col-lg-12');
+    listingExpiredMessage.classList.add('mb-5', 'col-lg-12');
     const listingExpiredMessageText =
       'In order to bid on listed items you must be logged in. Please log in, or register for a new account.';
     listingExpiredMessage.append(listingExpiredMessageText);
@@ -419,11 +488,12 @@ export function itemTemplateSingle(itemData) {
 
   // display listing description onto page
   const descriptionContainer = document.createElement('div');
-  descriptionContainer.classList.add('col-12', 'col-lg-12');
-  const descriptionTitle = document.createElement('p');
+  descriptionContainer.classList.add('col-12', 'col-lg-12', 'pb-4');
+  const descriptionTitle = document.createElement('h2');
   descriptionTitle.innerText = 'Description:';
   descriptionContainer.appendChild(descriptionTitle);
   const description = document.createElement('p');
+  description.classList.add('pt-2');
   if (itemData.description) {
     const descriptionText = itemData.description;
     description.append(descriptionText);
@@ -448,7 +518,7 @@ export function itemTemplateSingle(itemData) {
     contentThree.appendChild(noBidsMessage);
   } else {
     const biddersTitleContainer = document.createElement('div');
-    biddersTitleContainer.classList.add('col-12', 'col-lg-6', 'row');
+    biddersTitleContainer.classList.add('col-12', 'col-lg-5', 'row');
     const biddersHeader = document.createElement('h2');
     biddersHeader.classList.add('py-3', 'col');
     const biddersHeaderText = 'Bids made on listing:';
@@ -484,13 +554,12 @@ export function itemTemplateSingle(itemData) {
     if (itemData.bids) {
       for (let i = 0; i < bidsArrayReversed.length; i++) {
         const allBidsContainer = document.createElement('div');
-        // allBidsContainer.classList.add('row');
 
         const bidderContainer = document.createElement('div');
         bidderContainer.classList.add(
           'py-3',
           'col',
-          'col-lg-6',
+          'col-lg-5',
           'border',
           'border-primary',
           'rounded-2',
@@ -501,8 +570,8 @@ export function itemTemplateSingle(itemData) {
         bidderCreatedDate.classList.add(
           'createdDate',
           'px-3',
-          'pb-2',
-          'ps-lg-4'
+          'ps-lg-4',
+          'mb-2'
         );
         const bidderCreatedDateText = document.createTextNode(
           new Date(itemData.bids[i].created).toGMTString()
@@ -516,11 +585,17 @@ export function itemTemplateSingle(itemData) {
         const bidderNameP = document.createElement('p');
         const bidderNameText = itemData.bids[i].bidderName;
         bidderNameP.append(bidderNameText);
-        bidderNameP.classList.add('col-8', 'col-lg-8', 'ms-3', 'ms-lg-4');
+        bidderNameP.classList.add(
+          'col-8',
+          'col-lg-8',
+          'ms-3',
+          'ms-lg-4',
+          'mb-1'
+        );
         bidderContainer.append(bidderNameP);
 
         const bidderAmount = document.createElement('p');
-        bidderAmount.classList.add('col-3', 'col-lg-3', 'text-center');
+        bidderAmount.classList.add('col-3', 'col-lg-3', 'text-center', 'mb-1');
         const bidderAmountNumber = itemData.bids[i].amount;
         bidderAmount.append(bidderAmountNumber);
         bidderContainer.appendChild(bidderAmount);

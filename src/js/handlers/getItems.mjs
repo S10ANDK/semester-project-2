@@ -29,6 +29,7 @@ export async function getSpecificItem() {
     const item = await itemMethods.getListingUnauthorized();
     listingContainer.innerHTML = '';
     templates.renderItemTemplate(item, listingContainer);
+    topButton.style.display = 'block';
   } catch {
     console.log('An error has occured');
     pageContainer.innerHTML = '';

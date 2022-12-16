@@ -10771,7 +10771,7 @@ h1, .h1 {
 
 h2, .h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 0px;
 }
 
@@ -11044,8 +11044,12 @@ a {
   background-color: #313547;
 }
 
+.contentContainer {
+  max-width: 500px;
+}
+
 #imageGallery {
-  height: 500px;
+  height: 350px;
   max-width: 500px;
   background-color: #e0e0e0;
 }
@@ -11053,7 +11057,7 @@ a {
 .galleryImages {
   object-fit: contain;
   max-width: 500px;
-  height: 500px;
+  height: 350px;
 }
 
 .tags {
@@ -11061,11 +11065,21 @@ a {
   font-size: 1.1rem;
 }
 
-.tags .bid-button {
-  width: 320px;
+.updateListingButton {
+  color: #000;
+}
+
+.updateListingButton:hover,
+.updateListingButton:focus {
+  background-color: #4f4f4f;
+}
+
+.bid-button {
+  width: 280px;
 }
 
 .highestBidAmount {
+  width: 120px;
   color: #e87e51;
   font-size: 1.8rem;
   background-color: #313547;
@@ -11073,6 +11087,11 @@ a {
 
 .bidsAmountSpecific {
   transform: translateY(-2px);
+}
+
+.itemSpecificDates,
+.endsAtDate {
+  font-family: futura PT;
 }
 
 .banner_image {
@@ -11150,6 +11169,15 @@ footer p {
   }
   100% {
     opacity: 1;
+  }
+}
+@media (min-width: 992px) {
+  .contentContainer {
+    max-width: 1000px;
+  }
+  #specificItemsRendered {
+    border: 1px solid #c7c9c9;
+    border-radius: 10px;
   }
 }
 

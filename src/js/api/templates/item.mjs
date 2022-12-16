@@ -170,6 +170,8 @@ export function itemTemplateSingle(itemData) {
   contentThree.classList.add('row', 'g-0');
   contentThreeContainer.appendChild(contentThree);
 
+  // Display listing header as title
+
   // Displaying listings images with a gallery
   const img = document.createElement('img');
   img.classList.add('text-center', 'cardImg');
@@ -322,6 +324,11 @@ export function itemTemplateSingle(itemData) {
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   contentTwo.appendChild(itemHeading);
+
+  const headTitle = document.querySelector('#listingHeadTitle');
+  headTitle.innerHTML = '';
+  const headTitleText = itemData.title;
+  headTitle.append(headTitleText);
 
   // Displaying relevant dates
   const datesContainer = document.createElement('div');

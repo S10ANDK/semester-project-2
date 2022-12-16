@@ -120,24 +120,24 @@ export function itemTemplate(itemData) {
 
 export function itemTemplateSingle(itemData) {
   const item = document.createElement('div');
-  item.classList.add('px-lg-0', 'row');
+  item.classList.add('px-lg-0', 'row', 'g-0', 'overflow-hidden', 'py-5');
 
   const contentOneContainer = document.createElement('div');
-  contentOneContainer.classList.add('col', 'col-sm');
+  contentOneContainer.classList.add('col-12', 'col-lg-5', 'm-2');
   const contentOne = document.createElement('div');
-  contentOne.classList.add('row');
+  contentOne.classList.add('row', 'g-0');
   contentOneContainer.appendChild(contentOne);
 
   const contentTwoContainer = document.createElement('div');
-  contentTwoContainer.classList.add('col', 'col-sm');
+  contentTwoContainer.classList.add('col-12', 'col-lg-6', 'mt-3', 'ms-lg-5');
   const contentTwo = document.createElement('div');
-  contentTwo.classList.add('row');
+  contentTwo.classList.add('row', 'g-0');
   contentTwoContainer.appendChild(contentTwo);
 
   const contentThreeContainer = document.createElement('div');
-  contentThreeContainer.classList.add('col', 'col-sm');
+  contentThreeContainer.classList.add('col-12', 'col-lg-12');
   const contentThree = document.createElement('div');
-  contentThree.classList.add('row');
+  contentThree.classList.add('row', 'g-0');
   contentThreeContainer.appendChild(contentThree);
 
   // Displaying listings images with a gallery
@@ -148,7 +148,7 @@ export function itemTemplateSingle(itemData) {
     img.src = '/assets/image_placeholder.png';
     img.alt = 'image placeholder';
     img.classList.add('galleryImages');
-    item.append(img);
+    contentOne.append(img);
   } else {
     const imageGallery = document.createElement('div');
     imageGallery.setAttribute('id', 'imageGallery');
@@ -236,7 +236,7 @@ export function itemTemplateSingle(itemData) {
     noTags.innerText = 'No tags..';
     noTags.classList.add('fst-italic');
     tagsContainer.appendChild(noTags);
-    item.appendChild(tagsContainer);
+    contentOne.appendChild(tagsContainer);
   } else {
     const firstTag = document.createElement('p');
     firstTag.classList.add('d-inline');
@@ -256,12 +256,10 @@ export function itemTemplateSingle(itemData) {
 
   // Displays link to update listing page
   const nameLocalStorage = localStorage.getItem('name');
-  console.log(nameLocalStorage);
-  console.log(itemData.seller.name);
+
   if (itemData.seller.name === nameLocalStorage) {
     const idItem = itemData.id;
     const updateButton = document.createElement('a');
-    updateButton.classList('col-12');
     updateButton.href = '/html/list-item/update/?id=' + idItem;
     updateButton.innerText = 'Update listing';
     contentOne.appendChild(updateButton);
@@ -272,7 +270,7 @@ export function itemTemplateSingle(itemData) {
   // Display seller's name onto page
   const sellerName = document.createElement('p');
   sellerName.setAttribute('id', 'sellerName');
-  sellerName.classList.add('col-12', 'col-lg-6');
+  sellerName.classList.add('col-12', 'col-lg-12');
   const sellerNameText = `Listed by ${itemData.seller.name}`;
   sellerName.append(sellerNameText);
 
@@ -280,14 +278,14 @@ export function itemTemplateSingle(itemData) {
 
   // Creating and displaying listing header
   const itemHeading = document.createElement('h1');
-  itemHeading.classList.add('col-12', 'col-lg-6');
+  itemHeading.classList.add('col-12', 'col-lg-12');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   contentTwo.appendChild(itemHeading);
 
   // Displaying relevant dates
   const datesContainer = document.createElement('div');
-  datesContainer.classList.add('col-12', 'col-lg-6');
+  datesContainer.classList.add('col-12', 'col-lg-12');
 
   const createdDateP = document.createElement('p');
   createdDateP.classList.add('createdDate', 'col');
@@ -321,7 +319,7 @@ export function itemTemplateSingle(itemData) {
   const highestBidContainer = document.createElement('div');
   highestBidContainer.classList.add(
     'col-12',
-    'col-lg-6',
+    'col-lg-12',
     'row',
     'align-items-center'
   );
@@ -357,7 +355,7 @@ export function itemTemplateSingle(itemData) {
   } else {
     makeABidButtonContainer.classList.add(
       'col-12',
-      'col-lg-6',
+      'col-lg-12',
       'text-center',
       'py-4'
     );
@@ -409,7 +407,7 @@ export function itemTemplateSingle(itemData) {
   if (localStorage.getItem('name') === null) {
     makeABidButtonContainer.classList.add('d-none');
     const listingExpiredMessage = document.createElement('p');
-    listingExpiredMessage.classList.add('my-4', 'col-lg-5');
+    listingExpiredMessage.classList.add('my-4', 'col-lg-12');
     const listingExpiredMessageText =
       'In order to bid on listed items you must be logged in. Please log in, or register for a new account.';
     listingExpiredMessage.append(listingExpiredMessageText);
@@ -421,14 +419,21 @@ export function itemTemplateSingle(itemData) {
 
   // display listing description onto page
   const descriptionContainer = document.createElement('div');
-  descriptionContainer.classList.add('col-12', 'col-lg-6');
+  descriptionContainer.classList.add('col-12', 'col-lg-12');
   const descriptionTitle = document.createElement('p');
   descriptionTitle.innerText = 'Description:';
   descriptionContainer.appendChild(descriptionTitle);
   const description = document.createElement('p');
-  const descriptionText = itemData.description;
-  description.append(descriptionText);
-  descriptionContainer.appendChild(description);
+  if (itemData.description) {
+    const descriptionText = itemData.description;
+    description.append(descriptionText);
+    descriptionContainer.appendChild(description);
+  } else {
+    const descriptionText = 'No description provided..';
+    description.append(descriptionText);
+    description.classList.add('fst-italic');
+    descriptionContainer.appendChild(description);
+  }
   contentTwo.appendChild(descriptionContainer);
 
   item.appendChild(contentTwoContainer);
@@ -440,7 +445,7 @@ export function itemTemplateSingle(itemData) {
     const noBidsMessageText = 'No current bids ...';
     noBidsMessage.append(noBidsMessageText);
 
-    contentTwo.appendChild(noBidsMessage);
+    contentThree.appendChild(noBidsMessage);
   } else {
     const biddersTitleContainer = document.createElement('div');
     biddersTitleContainer.classList.add('col-12', 'col-lg-6', 'row');
@@ -464,7 +469,7 @@ export function itemTemplateSingle(itemData) {
         `${itemData._count.bids} bid`
       );
       bidAmount.appendChild(currentBidText);
-      contentThree.appendChild(bidAmount);
+      biddersTitleContainer.appendChild(bidAmount);
     } else {
       const currentBidText = document.createTextNode(
         `${itemData._count.bids} bids`
@@ -485,7 +490,7 @@ export function itemTemplateSingle(itemData) {
         bidderContainer.classList.add(
           'py-3',
           'col',
-          'col-md-6',
+          'col-lg-6',
           'border',
           'border-primary',
           'rounded-2',
@@ -506,7 +511,7 @@ export function itemTemplateSingle(itemData) {
         bidderContainer.appendChild(bidderCreatedDate);
 
         const bidderSubContainer = document.createElement('div');
-        // bidderSubContainer.classList.add('row');
+        bidderSubContainer.classList.add('row');
 
         const bidderNameP = document.createElement('p');
         const bidderNameText = itemData.bids[i].bidderName;
@@ -529,9 +534,10 @@ export function itemTemplateSingle(itemData) {
         contentThree.appendChild(allBidsContainer);
       }
 
-      item.appendChild(contentThreeContainer);
+      contentThreeContainer.appendChild(contentThree);
     }
   }
+  item.appendChild(contentThreeContainer);
 
   return item;
 }

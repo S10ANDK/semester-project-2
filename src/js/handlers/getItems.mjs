@@ -25,10 +25,9 @@ export async function getItemsList() {
 export async function getSpecificItem() {
   const pageContainer = document.querySelector('#pageContainerItemSpecific');
   const listingContainer = document.querySelector('#itemContainer');
-  const loaderContainer = document.querySelector('#loaderContainer');
   try {
     const item = await itemMethods.getListingUnauthorized();
-    loaderContainer.classList.add('d-none');
+    listingContainer.innerHTML = '';
     templates.renderItemTemplate(item, listingContainer);
   } catch {
     console.log('An error has occured');

@@ -10765,13 +10765,15 @@ body {
   font-family: Verdana, Tahoma, sans-serif;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: 1.8rem;
+  color: #313547;
 }
 
 h2, .h2 {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin: 0px;
 }
 
@@ -11157,6 +11159,57 @@ footer p {
 .footer_logo {
   width: 180px;
   padding: 100px 0px 100px;
+}
+
+.brand-header-2 {
+  font-family: Arial, sans-serif;
+  font-size: 1.4rem;
+}
+
+.brand-verdana {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.brand-arial {
+  font-family: Arial, sans-serif;
+}
+
+.brand-futura {
+  font-family: futura PT;
+  font-size: 1.2rem;
+}
+
+.brand-adjectives {
+  font-size: 1.7rem;
+  color: #313547;
+}
+
+.brand-trustworthy {
+  color: #3b78d3;
+}
+
+.brand-integrity {
+  color: #4c5970;
+}
+
+.brand-positivity {
+  color: #b960d4;
+}
+
+.brand-efficient {
+  color: #975806;
+}
+
+.brand-value {
+  color: green;
+}
+
+.color_values-container p {
+  font-size: 0.9rem;
+}
+
+.brand-about-container {
+  max-width: 400px;
 }
 
 @keyframes rotate {

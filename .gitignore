@@ -4,6 +4,9 @@
 # npm
 node_modules/
 
+# dist
+dist/
+
 # eslint
 .eslintcache
 

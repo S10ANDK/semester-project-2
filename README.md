@@ -58,7 +58,8 @@ Configured for hosting with Vite. Use:
 
 FOR TESTERS
 
-Unit tests can be written with Jest. Run your tests with:
+Unit tests can be written with Jest. Name your files using this format: "example.test.js". 
+Run your tests with:
 
 - npm run test-unit
 

@@ -10,7 +10,7 @@ Description
 - You can register a user and list your own items for auction.
 - The demographic this website is targeting are all people, young and old, who would like to buy/bid on desired items, and/or list items for auction.
 
-  Built With
+Built With
 
 - HTML
 - CSS
@@ -27,6 +27,7 @@ https://dapper-lebkuchen-726714.netlify.app/
 Contact
 
 https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/
+
 
 HOW TO CONFIGURE PROJECT LOCALLY
 
@@ -53,6 +54,7 @@ Update what files prettier and eslint are targeting to suit your needs (scripts 
 Configured for hosting with Vite. Use:
 
 - npm run dev
+
 
 FOR TESTERS
 

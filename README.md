@@ -1,6 +1,4 @@
-# semester-project-2
-
-## Auction Treasury
+# Auction Treasury (semester-project-2)
 
 ![Image of the Auction Treasury website](assets/readme/auctiontreasury.png)
 

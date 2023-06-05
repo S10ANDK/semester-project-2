@@ -32,6 +32,14 @@ Install devDependencies:
 - npm i
 </pre>
 
+Update what files prettier and eslint are targeting to suit your needs (scripts in package.json):
+
+<pre>
+"format": "prettier -w \_/.js",
+"lint": "eslint \_/.js",
+"lint-fix": "eslint \*/.js --cache --fix",
+</pre>
+
 ### Running
 
 Apply Styling by compiling from scss to css. Use:
@@ -44,14 +52,6 @@ or
 
 <pre>
 - npm run watch
-</pre>
-
-Update what files prettier and eslint are targeting to suit your needs (scripts in package.json):
-
-<pre>
-"format": "prettier -w \_/.js",
-"lint": "eslint \_/.js",
-"lint-fix": "eslint \*/.js --cache --fix",
 </pre>
 
 Configured for hosting with Vite. Use:

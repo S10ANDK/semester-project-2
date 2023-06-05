@@ -2,7 +2,7 @@
 
 ## Auction Treasury
 
-![Image of the Auction Treasury website](dist/assets/readme/auctiontreasury.png)
+![Image of the Auction Treasury website](assets/readme/auctiontreasury.png)
 
 This is a semester project made for my FrontEnd development studies. The concept for this website is an auction website for selling and buying all kinds of items. Hope you find that the website gets you inspired.
 

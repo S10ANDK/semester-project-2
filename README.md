@@ -1,16 +1,18 @@
 # semester-project-2
 
-Auction Treasury
+## Auction Treasury
+
+![Image of the Auction Treasury website](dist/assets/readme/auctiontreasury.png)
 
 This is a semester project made for my FrontEnd development studies. The concept for this website is an auction website for selling and buying all kinds of items. Hope you find that the website gets you inspired.
 
-Description
+## Description
 
 - The aim for this website is to let you bid on auctioned items.
 - You can register a user and list your own items for auction.
 - The demographic this website is targeting are all people, young and old, who would like to buy/bid on desired items, and/or list items for auction.
 
-Built With
+## Built With
 
 - HTML
 - CSS
@@ -20,30 +22,31 @@ Built With
 - Noroff API
 - Visual Studio Code
 
-Website Link
+## Getting Started
 
-https://dapper-lebkuchen-726714.netlify.app/
-
-Contact
-
-https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/
-
-
-HOW TO CONFIGURE PROJECT LOCALLY
+### Installing
 
 First make sure Node.js and git is installed locally on your device.
 
 Install devDependencies:
 
+<pre>
 - npm i
+</pre>
+
+### Running
 
 Apply Styling by compiling from scss to css. Use:
 
+<pre>
 - npm run build
+</pre>
 
-  or
+or
 
+<pre>
 - npm run watch
+</pre>
 
 Update what files prettier and eslint are targeting to suit your needs (scripts in package.json):
 
@@ -53,20 +56,35 @@ Update what files prettier and eslint are targeting to suit your needs (scripts 
 
 Configured for hosting with Vite. Use:
 
+<pre>
 - npm run dev
+</pre>
 
+## FOR TESTERS
 
-FOR TESTERS
-
-Unit tests can be written with Jest. Name your files using this format: "example.test.js". 
+Unit tests can be written with Jest. Name your files using this format: "example.test.js".
 Run your tests with:
 
+<pre>
 - npm run test-unit
+</pre>
 
 End-to-end tests can be written with Cypress. Run your tests with:
 
+<pre>
 - npm run test-e2e
+</pre>
 
-  or
+or
 
+<pre>
 - npm run test-e2e-cli
+</pre>
+
+## Website Link
+
+https://dapper-lebkuchen-726714.netlify.app/
+
+## Contact
+
+https://www.linkedin.com/in/stian-dille-kornbakk-335b5a159/

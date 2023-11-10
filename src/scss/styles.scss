@@ -131,12 +131,19 @@ a {
   height: 600px;
 }
 
-.searchField {
-  max-width: 964px;
+#searchField {
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+#searchField:focus {
+  box-shadow: none !important;
 }
 
 .item {
   border-color: $secondary;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 377px;
 }
 
 .item > * {
@@ -145,9 +152,8 @@ a {
 
 .cardImg {
   object-fit: cover;
-  width: 244px;
-  height: 180px;
-  align-self: flex-start;
+  width: 100%;
+  height: 200px;
 }
 
 .createdDate {
@@ -158,7 +164,7 @@ a {
 }
 
 .endsAtHeader {
-  align-self: flex-end;
+  display: block;
   margin: 5px 0px;
   font-family: Arial, Helvetica, sans-serif;
   color: $black;
@@ -172,13 +178,13 @@ a {
 }
 
 .itemHeading {
-  align-self: flex-start;
   font-size: 1.2rem;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
   color: $black;
-  max-height: 50px;
+  max-height: 23px;
   overflow: hidden;
+  min-width: 100%;
 }
 
 .descriptionSmall {

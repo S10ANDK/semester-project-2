@@ -12,25 +12,14 @@ export function itemTemplate(itemData) {
     'row',
     'w-100',
     'mw-290',
-    'h-600',
     'mx-auto',
-    'my-4',
-    'border',
+    'my-3',
     'border-2',
-    'rounded-3',
-    'p-3'
+    'p-0'
   );
-
-  const createdDateP = document.createElement('p');
-  createdDateP.classList.add('createdDate', 'col');
-  const createdDate = document.createTextNode(
-    new Date(itemData.created).toGMTString()
-  );
-  createdDateP.appendChild(createdDate);
-  item.appendChild(createdDateP);
 
   const img = document.createElement('img');
-  img.classList.add('text-center', 'cardImg');
+  img.classList.add('text-center', 'cardImg', 'p-0');
 
   if (itemData.media[0] === undefined) {
     img.src = '/assets/image_placeholder.png';
@@ -46,32 +35,13 @@ export function itemTemplate(itemData) {
   }
 
   const itemHeading = document.createElement('h2');
-  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'mt-4');
+  itemHeading.classList.add('col', 'd-flex', 'itemHeading', 'my-2');
   const itemHeadingText = document.createTextNode(itemData.title);
   itemHeading.appendChild(itemHeadingText);
   item.appendChild(itemHeading);
 
-  if (itemData.description) {
-    const bodyContainer = document.createElement('div');
-    bodyContainer.classList.add('overflow-hidden', 'my-2', 'descriptionSmall');
-    const bodyText = document.createTextNode(itemData.description);
-    bodyContainer.appendChild(bodyText);
-    item.appendChild(bodyContainer);
-  } else {
-    const bodyContainer = document.createElement('div');
-    bodyContainer.classList.add(
-      'overflow-hidden',
-      'my-2',
-      'descriptionSmall',
-      'fst-italic'
-    );
-    const bodyText = document.createTextNode('No description provided..');
-    bodyContainer.appendChild(bodyText);
-    item.appendChild(bodyContainer);
-  }
-
   const endsAtHeader = document.createElement('p');
-  endsAtHeader.classList.add('endsAtHeader', 'd-flex', 'col-8');
+  endsAtHeader.classList.add('endsAtHeader', 'col-8');
   const endsAtText = document.createTextNode('Ending at:');
   endsAtHeader.appendChild(endsAtText);
   item.appendChild(endsAtHeader);
@@ -106,7 +76,8 @@ export function itemTemplate(itemData) {
     'btn',
     'btn-primary',
     'btn-outline-success',
-    'viewBtn'
+    'viewBtn',
+    'rounded-0'
   );
   const id = itemData.id;
   viewPostButton.href = '/html/item-specific/?id=' + id;
